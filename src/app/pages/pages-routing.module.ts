@@ -17,16 +17,16 @@ const routes: Routes = [
         path: "home",
         loadChildren: "./home/home.module#HomeModule"
       },
-      // {
-      //   path: "profiles",
-      //   loadChildren: "./profiles/profiles.module#ProfilesModule"
-      // },
+      {
+        path: "shop",
+        loadChildren: "./shop/shop.module#ShopModule"
+      },
       // {
       //   path: "account",
       //   loadChildren: "./account/account.module#AccountModule"
       // },
       // { path: "page-not-found", component: NotFoundComponent },
-      // { path: "**", redirectTo: "/page-not-found" }
+      { path: "**", redirectTo: "/home" }
     ]
   }
 ];

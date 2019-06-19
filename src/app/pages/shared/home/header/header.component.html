@@ -37,19 +37,30 @@
                               <!--=======  header top dropdown container  =======-->
                               
                               <div class="headertop-dropdown-container justify-content-center justify-content-md-end">
-                                  <div class="header-top-single-dropdown">
+                                  <div class="header-top-single-dropdown" *ngIf="!currentUser">
                                       <a href="javascript:void(0)" class="active-dropdown-trigger" id="user-options">My Account <i class="ion-ios-arrow-down"></i></a>
                                       <!--=======  dropdown menu items  =======-->
                                       
                                       <div class="header-top-single-dropdown__dropdown-menu-items deactive-dropdown-menu extra-small-mobile-fix">
                                           <ul>
-                                              <li><a href="login-register.html">Register</a></li>
-                                              <li><a href="login-register.html">Login</a></li>
+                                              <li><a href="javascript:void(0)" routerLink="/home/register">Register</a></li>
+                                              <li><a href="javascript:void(0)" routerLink="/home/login">Login</a></li>
                                           </ul>
                                       </div>
                                       
                                       <!--=======  End of dropdown menu items  =======-->
                                   </div>
+                                  <div class="header-top-single-dropdown" *ngIf="currentUser">
+                                        <a href="javascript:void(0)" class="active-dropdown-trigger" id="user-options-02">{{currentUser.firstName + currentUser.lastName}}<i class="ion-ios-arrow-down"></i></a>
+                                        <!--=======  dropdown menu items  =======-->
+                                        
+                                        <div class="header-top-single-dropdown__dropdown-menu-items deactive-dropdown-menu extra-small-mobile-fix">
+                                            <ul>
+                                                <li><a href="javascript:void(0)" (click)="logout()">Logout</a></li>
+                                            </ul>
+                                        </div>
+                                  </div>
+
                                   <span class="separator">|</span>
                                   <div class="header-top-single-dropdown">
                                       <a href="javascript:void(0)" class="active-dropdown-trigger" id="language-options"> <img src="../../../../assets/img/icons/en-gb.png" alt=""> En-Gb <i class="ion-ios-arrow-down"></i></a>
@@ -144,38 +155,26 @@
                               <div class="header-cart-icon">
                                   <a href="javascript:void(0)" id="small-cart-trigger" class="small-cart-trigger">
                                       <i class="icon-shopping-cart"></i>
-                                      <span class="cart-counter">2</span>
+                                      <span class="cart-counter">{{cartProducts.length}}</span>
                                   </a>
 
                                   <!--=======  small cart  =======-->
                                   
                                   <div class="small-cart deactive-dropdown-menu">
                                       <div class="small-cart-item-wrapper">
-                                          <div class="single-item">
+                                          <div class="single-item" *ngFor="let item of cartProducts">
                                               <div class="image">
-                                                  <a href="single-product.html">
-                                                      <img src="../../../../assets/img/cart-image/small1-90x90.jpg" class="img-fluid" alt="">
+                                                  <a href="javascript:void(0)">
+                                                      <img src="{{item.image}}" class="img-fluid" alt="">
                                                   </a>
                                               </div>
                                               <div class="content">
-                                                  <p class="cart-name"><a href="single-product.html">Cillum dolore</a></p>
-                                                  <p class="cart-quantity"><span class="quantity-mes">1 x </span> $78.80</p>
+                                                  <p class="cart-name"><a href="javascript:void(0)">{{item.name}}</a></p>
+                                                  <p class="cart-quantity"><span class="quantity-mes">{{item.quatity}} x </span> {{item.priceDiscount ? item.priceDiscount : item.price}}</p>
                                               </div>
                                               <a href="#" class="remove-icon"><i class="ion-close-round"></i></a>
                                           </div>
-                                          <div class="single-item">
-                                              
-                                              <div class="image">
-                                                  <a href="single-product.html">
-                                                      <img src="../../../../assets/img/cart-image/small2-90x90.jpg" class="img-fluid" alt="">
-                                                  </a>
-                                              </div>
-                                              <div class="content">
-                                                  <p class="cart-name"><a href="single-product.html">Condimentum posuere</a></p>
-                                                  <p class="cart-quantity"><span class="quantity-mes">1 x </span> $78.80</p>
-                                              </div> 
-                                              <a href="#" class="remove-icon"><i class="ion-close-round"></i></a>
-                                          </div>
+
                                       </div>
 
                                       <div class="cart-calculation-table">
@@ -287,9 +286,9 @@
                                               <li><a href="shop-list-right-sidebar.html">shop List Right Sidebar</a></li>
                                           </ul>
                                       </li>
-                                      <li><a href="single-product.html">Single Product</a>
+                                      <li><a href="javascript:void(0)">Single Product</a>
                                           <ul>
-                                              <li><a href="single-product.html">Single Product</a></li>
+                                              <li><a href="javascript:void(0)">Single Product</a></li>
                                               <li><a href="single-product-variable.html">Single Product variable</a></li>
                                               <li><a href="single-product-affiliate.html">Single Product affiliate</a></li>
                                               <li><a href="single-product-group.html">Single Product group</a></li>
@@ -298,7 +297,7 @@
                                               
                                           </ul>
                                       </li>
-                                      <li><a href="single-product.html">Single Product</a>
+                                      <li><a href="javascript:void(0)">Single Product</a>
                                           <ul>
                                               <li><a href="single-product-gallery-left.html">Gallery Left</a></li>
                                               <li><a href="single-product-gallery-right.html">Gallery Right</a></li>

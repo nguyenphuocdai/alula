@@ -88,7 +88,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
       }
 
       /*Slider Start*/
-      $this.slick({
+      $this.not('.slick-initialized').slick({
         autoplay: $autoPlay,
         autoplaySpeed: $autoPlaySpeed,
         speed: $speed,

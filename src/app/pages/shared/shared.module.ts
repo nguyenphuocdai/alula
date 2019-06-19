@@ -16,7 +16,13 @@ import { ClientComponent } from "./home/client/client.component";
 import { SubscribeComponent } from "./home/subscribe/subscribe.component";
 import { ProductModalComponent } from "./home/product-modal/product-modal.component";
 import { MaterialModule } from "./material/material.module";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { LoginComponent } from "./home/login/login.component";
+import { RegisterComponent } from "./home/register/register.component";
+import { CartComponent } from "./home/cart/cart.component";
+import { ProductListComponent } from "./shop/product-list/product-list.component";
+import { CartService } from 'src/app/core/_services/cart.service';
+import { ProductItemComponent } from './shop/product-item/product-item.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +38,12 @@ import { FormsModule } from '@angular/forms';
     BlogLatestComponent,
     ClientComponent,
     SubscribeComponent,
-    ProductModalComponent
+    ProductModalComponent,
+    LoginComponent,
+    RegisterComponent,
+    CartComponent,
+    ProductListComponent,
+    ProductItemComponent
   ],
   exports: [
     HeaderComponent,
@@ -48,14 +59,21 @@ import { FormsModule } from '@angular/forms';
     ClientComponent,
     SubscribeComponent,
     ProductModalComponent,
-    MaterialModule
+    MaterialModule,
+    LoginComponent,
+    RegisterComponent,
+    CartComponent,
+    ProductListComponent,
+    ProductItemComponent
   ],
   entryComponents: [ProductModalComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
     MaterialModule,
-    FormsModule
-  ]
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [CartService]
 })
 export class SharedModule {}
