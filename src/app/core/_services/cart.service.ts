@@ -9,23 +9,22 @@ const url = "http://localhost:3000/api";
 @Injectable({ providedIn: "root" })
 export class CartService {
 
-  // private cartProductsSubject: BehaviorSubject<product[]>;
-  // public currentCart: Observable<product[]>;
-  cartProducts = new EventEmitter<boolean>();
+  private cartProductsSubject: BehaviorSubject<product[]>;
+  public currentCart: Observable<product[]>;
   private cartSubject = new Subject<CartState>();
   Products: product[] = [];
   CartState = this.cartSubject.asObservable();
 
   constructor(private localStorageService: LocalStorageService) {
-    // this.cartProductsSubject = new BehaviorSubject<product[]>(
-    //   this.localStorageService.get(AppConstant.CART_PRODUCTS)
-    // );
-    // this.currentCart = this.cartProductsSubject.asObservable();
+    this.cartProductsSubject = new BehaviorSubject<product[]>(
+      this.localStorageService.get(AppConstant.CART_PRODUCTS)
+    );
+    this.currentCart = this.cartProductsSubject.asObservable();
   }
 
-  // public get currentCartProducts(): product[] {
-  //   return this.cartProductsSubject.value;
-  // }
+  //public get currentCartProducts(): product[] {
+  //  return this.cartProductsSubject.value;
+  //}
 
   addProduct(_product: product) {
     this.Products = this.localStorageService.get(AppConstant.CART_PRODUCTS);
@@ -46,8 +45,7 @@ export class CartService {
       this.Products.push(_product);
     }
     this.cartSubject.next(<CartState>{ loaded: true, products: this.Products });
-    // this.cartProductsSubject.next(this.Products);
-    this.cartProducts.emit(true);
+    this.cartProductsSubject.next(this.Products);
     this.localStorageService.set(AppConstant.CART_PRODUCTS, this.Products);
   }
 

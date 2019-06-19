@@ -23,6 +23,7 @@ import { CartComponent } from "./home/cart/cart.component";
 import { ProductListComponent } from "./shop/product-list/product-list.component";
 import { CartService } from 'src/app/core/_services/cart.service';
 import { ProductItemComponent } from './shop/product-item/product-item.component';
+import { SnackComponent } from './component/snack/snack.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ProductItemComponent } from './shop/product-item/product-item.component
     RegisterComponent,
     CartComponent,
     ProductListComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    SnackComponent
   ],
   exports: [
     HeaderComponent,
@@ -64,16 +66,16 @@ import { ProductItemComponent } from './shop/product-item/product-item.component
     RegisterComponent,
     CartComponent,
     ProductListComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    SnackComponent
   ],
-  entryComponents: [ProductModalComponent],
+  entryComponents: [ProductModalComponent, SnackComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule
-  ],
-  providers: [CartService]
+  ]
 })
 export class SharedModule {}

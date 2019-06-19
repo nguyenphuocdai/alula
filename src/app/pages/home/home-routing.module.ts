@@ -4,7 +4,6 @@ import { HomeIndexComponent } from './home-index/home-index.component';
 import { HomeComponent } from './home.component';
 import { LoginComponent } from '../shared/home/login/login.component';
 import { RegisterComponent } from '../shared/home/register/register.component';
-import { CartComponent } from '../shared/home/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -14,7 +13,6 @@ const routes: Routes = [
       { path: '', component: HomeIndexComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'cart', component: CartComponent },
     ]
   },
 ];

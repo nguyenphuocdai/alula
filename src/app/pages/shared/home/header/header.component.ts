@@ -5,7 +5,8 @@ import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
 import { CartService } from "src/app/core/_services/cart.service";
 import { product } from "src/app/core/_mockup/product";
-import { CartState } from "src/app/core/_services/cart-state";
+import { AppConstant } from "../../../../core/_const/app.constant";
+import { LocalStorageService } from "../../../../core/_services/local.storage.service";
 declare var $: any;
 
 @Component({
@@ -19,14 +20,14 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   cartSubscription: Subscription;
   users: User[] = [];
   cartProducts: product[] = [];
-  subscription: Subscription;
+  totalAmount: number = 0;
 
   constructor(
     private authenticationService: AuthenticationService,
+    private localstorage: LocalStorageService,
     private cartService: CartService,
     private router: Router
   ) {
-    // user
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(
       user => {
         this.currentUser = user;
@@ -34,31 +35,27 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     );
 
-    // cart
-    // this.cartSubscription = this.cartService
-    //   .currentCartProducts()
-    //   .subscribe(cartProducts => {
-    //     this.cartProducts = cartProducts;
-    //     console.log(this.cartProducts);
-    //   });
-    // this.cartSubscription = this.cartService.currentCart.subscribe(
-    //   cartProducts => {
-    //     this.cartProducts = cartProducts;
-    //     console.log(this.cartProducts);
-    //   }
-    // );
-    this.subscription = this.cartService.cartProducts.subscribe(
-      x => {
-        // this.products = state.products;
-        // this.cartProducts = state.products;
-        console.log(x);
+    this.cartSubscription = this.cartService.currentCart.subscribe(
+      products => {
+        this.cartProducts = products;
+        let cartProducts = this.cartProducts;
+
+        if (cartProducts.length > 0) {
+          let total = 0;
+          for (var i in cartProducts) {
+            if (cartProducts.hasOwnProperty(i)) {
+              total += cartProducts[i].priceDiscount;
+            }
+          }
+          this.totalAmount = Number(total);
+        }
       }
     );
   }
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit(): void {
-    $("#small-cart-trigger").on("click", function(event) {
+    $("#small-cart-trigger").on("click", function (event) {
       event.stopPropagation();
       $(this).toggleClass("active");
       $(this)
@@ -73,7 +70,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   updateUserDropdown() {
     setTimeout(() => {
-      $("#user-options-02").on("click", function(event) {
+      $("#user-options-02").on("click", function (event) {
         event.stopPropagation();
         $(this)
           .siblings()
@@ -83,7 +80,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
     setTimeout(() => {
       if ($("#user-options").length > 0) {
-        $("#user-options").on("click", function(event) {
+        $("#user-options").on("click", function (event) {
           event.stopPropagation();
           $(this)
             .siblings()
@@ -94,8 +91,13 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
     this.currentUserSubscription.unsubscribe();
     this.cartSubscription.unsubscribe();
+  }
+
+  removeItemCart(item) {
+    let index = this.cartProducts.findIndex(x => x.id === item.id);
+    this.cartProducts.splice(index, 1);
+    this.localstorage.set(AppConstant.CART_PRODUCTS, this.cartProducts);
   }
 }

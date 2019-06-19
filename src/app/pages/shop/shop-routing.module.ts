@@ -2,12 +2,17 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ShopComponent } from "./shop.component";
 import { ShopIndexComponent } from "./shop-index/shop-index.component";
+import { CartComponent } from "../shared/home/cart/cart.component";
 
 const routes: Routes = [
   {
     path: "",
     component: ShopComponent,
-    children: [{ path: "", component: ShopIndexComponent }]
+    children: [
+      { path: "", component: ShopIndexComponent },
+      { path: "cart", component: CartComponent }
+
+    ]
   }
 ];
 
@@ -15,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ShopRoutingModule {}
+export class ShopRoutingModule { }
