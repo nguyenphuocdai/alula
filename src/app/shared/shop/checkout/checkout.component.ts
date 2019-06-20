@@ -75,8 +75,7 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
       city: ["", Validators.required],
       state: ["", Validators.required],
       zipcode: ["", Validators.required],
-      methodPayment: ["cash", Validators.required],
-      agree: ["", Validators.requiredTrue]
+      methodPayment: ["cash", Validators.required]
     });
   }
 

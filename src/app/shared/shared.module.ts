@@ -26,9 +26,13 @@ import { SnackComponent } from "./component/snack/snack.component";
 import { CheckoutComponent } from "./shop/checkout/checkout.component";
 import { CheckoutResultComponent } from "./shop/checkout-result/checkout-result.component";
 import { ConfirmComponent } from "./shop/confirm/confirm.component";
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { AdminAsideComponent } from './admin/admin-aside/admin-aside.component';
+import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 
 @NgModule({
   declarations: [
+    // home
     HeaderComponent,
     FooterComponent,
     SliderComponent,
@@ -50,9 +54,14 @@ import { ConfirmComponent } from "./shop/confirm/confirm.component";
     SnackComponent,
     CheckoutComponent,
     CheckoutResultComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    // admin
+    AdminHeaderComponent,
+    AdminAsideComponent,
+    AdminOrderComponent
   ],
   exports: [
+    // home
     HeaderComponent,
     FooterComponent,
     SliderComponent,
@@ -75,7 +84,11 @@ import { ConfirmComponent } from "./shop/confirm/confirm.component";
     SnackComponent,
     CheckoutComponent,
     CheckoutResultComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    // admin
+    AdminHeaderComponent,
+    AdminAsideComponent,
+    AdminOrderComponent
   ],
   entryComponents: [ProductModalComponent, SnackComponent, ConfirmComponent],
   imports: [

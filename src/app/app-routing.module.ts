@@ -8,8 +8,8 @@ const routes: Routes = [
   // { path: 'heroes', component: HeroesComponent },
 
   {path: '', redirectTo: '', pathMatch: 'full'},
+  {path: 'admin', loadChildren: './admin/admin.module#AdminModule'},
   {path: '', loadChildren: './pages/pages.module#PagesModule'},
-  {path: 'admin', loadChildren: './pages/pages.module#PagesModule'},
 
 ];
 

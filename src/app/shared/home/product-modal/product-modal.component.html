@@ -1,21 +1,3 @@
-<!-- <div class="modal fade quick-view-modal-container" id="quick-view-modal-container" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="container">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-                 
-      </div>
-    </div>
-    
-    </div>
-    </div> -->
-
-
     <div class="col-xl-12 col-lg-12 container-slick">
         <div class="row">
             <div class="col-xl-5 col-lg-6 col-md-6 mb-xxs-25 mb-xs-25 mb-sm-25">
@@ -178,15 +160,8 @@
                 <!--=======  product detail content  =======-->
                 
                 <div class="product-detail-content">
-                    <div class="tags mb-5">
-                        <span class="tag-title">Tags:</span>
-                        <ul class="tag-list">
-                            <li><a href="#">Plant</a>,</li>
-                            <li><a href="#">Garden</a></li>
-                        </ul>
-                    </div>
-
-                    <h3 class="product-details-title mb-15">Lorem ipsum indoor plants</h3>
+            
+                    <h3 class="product-details-title mb-15">{{item.name}}</h3>
                     <div class="rating">
                         <i class="ion-android-star active"></i>
                         <i class="ion-android-star active"></i>
@@ -194,14 +169,14 @@
                         <i class="ion-android-star active"></i>
                         <i class="ion-android-star"></i>
                     </div>
-                    <p class="product-price product-price--big mb-10"><span class="discounted-price">$100.00</span> <span class="main-price discounted">$120.00</span></p>
+                    <p class="product-price product-price--big mb-10"><span class="discounted-price">${{item.priceDiscount}}</span> <span class="main-price discounted">${{item.price}}</span></p>
 
                     <div class="product-info-block mb-30">
                         <div class="single-info">
-                            <span class="title">Ex Tax:</span>
-                            <span class="value">$95.00</span>
+                            <span class="title">Product Code.:</span>
+                            <span class="value">{{item.id}}</span>
                         </div>
-                        <div class="single-info">
+                        <!-- <div class="single-info">
                             <span class="title">Brand:</span>
                             <span class="value"><a href="#">Brac</a></span>
                         </div>
@@ -212,28 +187,28 @@
                         <div class="single-info">
                             <span class="title">Availability:</span>
                             <span class="value stock-red">In stock</span>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="product-short-desc mb-25">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas consectetur inventore voluptatem dignissimos nemo repellendus est, harum maiores veritatis quidem.</p>
+                        <p>{{item.shortDesc}}</p>
                     </div>
 
                     <div class="quantity mb-20">
-                        <span class="quantity-title mr-20">Qty</span> 
+                        <!-- <span class="quantity-title mr-20">Qty</span> 
                         <div class="pro-qty mr-15 mb-lg-20 mb-md-20 mb-sm-20">
                             <input type="text" value="1">
-                        </div>
-                        <button class="theme-button product-cart-button">+ Add to Cart</button>
+                        </div> -->
+                        <button type="button" class="theme-button product-cart-button" (click)="openDialog(item)">Add to Cart</button>
                     </div>
 
-                    <div class="compare-button mb-15">
+                    <!-- <div class="compare-button mb-15">
                         <a href="#"><i class="icon-sliders"></i> Compare This Product</a>
                     </div>
 
                     <div class="wishlist-button">
                         <a href="#"><i class="icon-heart"></i> Add to Wishlist</a>
-                    </div>
+                    </div> -->
                 </div>
                 
                 <!--=======  End of product detail content  =======-->

@@ -1,4 +1,9 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBar, MatDialog } from '@angular/material';
+import { product } from 'src/app/core/_mockup/product';
+import { SnackComponent } from '../../component/snack/snack.component';
+import { CartService } from 'src/app/core/_services/cart.service';
+import { ConfirmComponent } from '../../shop/confirm/confirm.component';
 declare var $: any;
 @Component({
   selector: 'app-product-modal',
@@ -6,11 +11,52 @@ declare var $: any;
   styleUrls: ['./product-modal.component.scss']
 })
 export class ProductModalComponent implements OnInit, AfterViewInit {
-
-  constructor() { }
+  durationInSeconds = 5;
+  horizontalPosition: MatSnackBarHorizontalPosition = "right";
+  verticalPosition: MatSnackBarVerticalPosition = "top";
+  item: product;
+  constructor(
+    public dialogProductModalRef: MatDialogRef<ProductModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private _cartService: CartService,
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit() {
+    this.item = this.data.item;
+    console.log(this.item);
   }
+
+  AddProduct(_product: product) {
+    _product.added = true;
+    _product.quatity = 1;
+    this._cartService.addProduct(_product);
+    this.openSnackBar();
+  }
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackComponent, {
+      duration: 5000,
+      data: "Add item to cart successfully !",
+      verticalPosition: this.verticalPosition,
+      horizontalPosition: this.horizontalPosition
+    });
+  }
+  openDialog(_product: product) {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: "400px",
+      data: { name: "name" }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.AddProduct(_product);
+        this.dialogProductModalRef.close();
+      }
+    });
+  }
+
 
   ngAfterViewInit(): void {
     /*=============================================

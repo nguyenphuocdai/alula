@@ -24,11 +24,27 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/admin/vendor/animate/animate.css",
+              "src/assets/admin/vendor/font-awesome/css/all.min.css",
+              "src/assets/admin/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css",
+              "src/assets/admin/css/theme.css",
+              "src/assets/admin/css/custom.css"
             ],
             "scripts": [
               "src/assets/js/vendors.js",
-              "src/assets/js/active.js"
+              "src/assets/js/active.js",
+              "src/assets/admin/vendor/modernizr/modernizr.js",
+              "src/assets/admin/vendor/jquery-browser-mobile/jquery.browser.mobile.js",
+              "src/assets/admin/vendor/jquery-cookie/jquery.cookie.js",
+              "src/assets/admin/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js",
+              "src/assets/admin/vendor/common/common.js",
+              "src/assets/admin/vendor/nanoscroller/nanoscroller.js",
+              "src/assets/admin/vendor/magnific-popup/jquery.magnific-popup.js",
+              "src/assets/admin/vendor/jquery-placeholder/jquery.placeholder.js",
+              "src/assets/admin/js/theme.js",
+              "src/assets/admin/js/custom.js",
+              "src/assets/admin/js/theme.init.js"
             ]
           },
           "configurations": {
