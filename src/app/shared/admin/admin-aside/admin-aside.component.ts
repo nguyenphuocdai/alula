@@ -1,5 +1,5 @@
 import { Component, OnInit,AfterViewInit } from '@angular/core';
-declare var $: any;
+import * as $ from 'jquery';;
 declare var jQuery:any;
 @Component({
   selector: 'app-admin-aside',

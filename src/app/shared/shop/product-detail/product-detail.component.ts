@@ -1,15 +1,43 @@
-import { Component, OnInit, AfterViewInit } from "@angular/core";
+import { product } from './../../../core/_mockup/product';
+import { ProductSerivce } from "./../../../core/_services/product.service";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { LocalStorageService } from "src/app/core/_services/local.storage.service";
 import * as $ from "jquery";
-import 'slick-carousel';
+import "slick-carousel";
+
 @Component({
-  selector: "app-slider",
-  templateUrl: "./slider.component.html",
-  styleUrls: ["./slider.component.scss"]
+  selector: "app-product-detail",
+  templateUrl: "./product-detail.component.html",
+  styleUrls: ["./product-detail.component.scss"]
 })
-export class SliderComponent implements OnInit, AfterViewInit {
-  constructor() {}
+export class ProductDetailComponent implements OnInit {
+  id: number;
+  sub: any;
+  item: any;
+  Products: product[] [];
+  constructor(
+    private route: ActivatedRoute,
+    private localStorageService: LocalStorageService,
+    private productService: ProductSerivce
+  ) {
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params["id"];
+      this.productService.getAllProducts().subscribe(arrProducts => {
+        this.Products = arrProducts;
+        for (let i = 0; i < arrProducts.length; i++) {
+          const element = arrProducts[i];
+          if (element.id === +this.id) {
+            console.log(element);
+            this.item = element;
+          }
+        }
+      });
+    });
+  }
 
   ngOnInit() {}
+
   ngAfterViewInit(): void {
     /*=============================================
     =            slick slider active            =

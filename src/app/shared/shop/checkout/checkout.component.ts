@@ -1,3 +1,4 @@
+import { OrderSerivce } from "./../../../core/_services/order.service";
 import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { product } from "src/app/core/_mockup/product";
@@ -10,9 +11,9 @@ import {
   MatSnackBarVerticalPosition,
   MatSnackBarHorizontalPosition
 } from "@angular/material";
-import { AppConstant } from 'src/app/core/_const/app.constant';
-import { Router } from '@angular/router';
-declare var $: any;
+import { AppConstant } from "src/app/core/_const/app.constant";
+import { Router, NavigationEnd } from "@angular/router";
+import * as $ from "jquery";
 
 @Component({
   selector: "app-checkout",
@@ -34,13 +35,20 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
     private localstorage: LocalStorageService,
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private orderSerivce: OrderSerivce
   ) {
     this.cartSubscription = this.cartService.currentCart.subscribe(products => {
+      if (products.length === 0) {
+        router.events.subscribe(val => {
+          if (val instanceof NavigationEnd) {
+            if (val.url === "/shop/cart") {
+              this.openSnackBar("Sorry, Cart's Empty !");
+            }
+          }
+        });
 
-      if(products.length === 0){
-        this.openSnackBar("Sorry, Cart's Empty !");
-        this.router.navigate(['/shop/cart']);
+        this.router.navigate(["/shop/cart"]);
         return;
       }
 
@@ -82,7 +90,7 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
   onSubmit() {
     this.submitted = true;
 
-    setTimeout(()=>{
+    setTimeout(() => {
       this.loading = true;
       window.scrollTo(0, 0);
 
@@ -92,7 +100,7 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
         this.loading = false;
         return;
       }
-  
+
       let firstname = this.checkoutForm.controls["firstname"].value;
       let lastname = this.checkoutForm.controls["lastname"].value;
       let email = this.checkoutForm.controls["email"].value;
@@ -105,7 +113,7 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
       let state = this.checkoutForm.controls["state"].value;
       let zipcode = this.checkoutForm.controls["zipcode"].value;
       let methodPayment = this.checkoutForm.controls["methodPayment"].value;
-  
+
       let objBill = {
         id: this.generateUUID(),
         firstname: firstname,
@@ -126,16 +134,16 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
       let datalocal = this.localstorage.get(AppConstant.BILL_ORDER);
       datalocal.push(objBill);
       this.localstorage.set(AppConstant.BILL_ORDER, datalocal);
-  
-      setTimeout(()=>{
+      this.orderSerivce.subjectOrders(datalocal);
+
+      setTimeout(() => {
         this.loading = false;
         this.submitted = false;
         this.cartService.clearCartProducts();
         this.localstorage.set(AppConstant.CART_PRODUCTS, []);
-        this.router.navigate(['/shop/checkout-result', objBill["id"]]);
-      },3000)
-
-    } ,2000)
+        this.router.navigate(["/shop/checkout-result", objBill["id"]]);
+      }, 3000);
+    }, 2000);
   }
 
   openSnackBar(message: string) {
@@ -165,14 +173,16 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
   }
   generateUUID() {
     var d = new Date().getTime();
-    if(Date.now){
-        d = Date.now();
+    if (Date.now) {
+      d = Date.now();
     }
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = (d + Math.random()*16)%16 | 0;
-        d = Math.floor(d/16);
-        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+    var uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(
+      c
+    ) {
+      var r = (d + Math.random() * 16) % 16 | 0;
+      d = Math.floor(d / 16);
+      return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
     });
     return uuid;
-};
+  }
 }

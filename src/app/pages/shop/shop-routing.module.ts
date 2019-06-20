@@ -1,3 +1,4 @@
+import { ProductDetailComponent } from './../../shared/shop/product-detail/product-detail.component';
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ShopComponent } from "./shop.component";
@@ -12,6 +13,7 @@ const routes: Routes = [
     component: ShopComponent,
     children: [
       { path: "", component: ShopIndexComponent },
+      { path: "product-detail/:id", component: ProductDetailComponent },
       { path: "cart", component: CartComponent },
       { path: "checkout", component: CheckoutComponent },
       { path: "checkout-result/:id", component: CheckoutResultComponent }

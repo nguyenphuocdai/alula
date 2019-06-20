@@ -54,13 +54,13 @@
 
 
 	/*----------  Scroll to top  ----------*/
-
-	$('.scroll-top').on('click', function () {
-		$('html,body').animate({
-			scrollTop: 0
-		}, 2000);
-	});
-
+    $(window).bind("load", function() {
+        $('.scroll-top').on('click', function () {
+            $('html,body').animate({
+                scrollTop: 0
+            }, 2000);
+        });
+    });
     
     /*=====  End of menu sticky and scroll to top  ======*/
     

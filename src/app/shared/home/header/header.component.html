@@ -164,12 +164,12 @@
                                       <div class="small-cart-item-wrapper">
                                           <div class="single-item" *ngFor="let item of cartProducts">
                                               <div class="image">
-                                                  <a href="javascript:void(0)">
+                                                  <a href="javascript:void(0)" [routerLink]="['/shop/product-detail', item.id]">
                                                       <img src="{{item.image}}" class="img-fluid" alt="">
                                                   </a>
                                               </div>
                                               <div class="content">
-                                                  <p class="cart-name"><a href="javascript:void(0)">{{item.name}}</a></p>
+                                                  <p class="cart-name"><a href="javascript:void(0)" [routerLink]="['/shop/product-detail', item.id]">{{item.name}}</a></p>
                                                   <p class="cart-quantity"><span class="quantity-mes">{{item.quatity}} x </span> {{item.priceDiscount ? item.priceDiscount : item.price}}</p>
                                               </div>
                                               <a href="javascript:void(0)" class="remove-icon"><i class="ion-close-round" (click)="openDialog(item)"></i></a>
@@ -200,7 +200,8 @@
                                           </table>
 
                                           <div class="cart-buttons">
-                                              <a href="javascript:void(0)" routerLink="/shop/cart" class="theme-button">View Cart</a>
+                                              <a href="javascript:void(0)" *ngIf="cartProducts.length > 0" routerLink="/shop/cart" class="theme-button">View Cart</a>
+                                              <a href="javascript:void(0)" *ngIf="cartProducts.length === 0" routerLink="/shop" class="theme-button">Go to shop</a>
                                               <a href="javascript:void(0)" *ngIf="cartProducts.length > 0" routerLink="/shop/checkout" class="theme-button">Checkout</a>
                                           </div>
                                       </div>

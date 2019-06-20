@@ -9,7 +9,8 @@ import { User } from 'src/app/core/_models';
 import { AuthenticationService } from 'src/app/core/_services';
 import { LocalStorageService } from 'src/app/core/_services/local.storage.service';
 import { AppConstant } from 'src/app/core/_const/app.constant';
-declare var $: any;
+import * as $ from 'jquery';
+
 
 @Component({
   selector: "app-header",
