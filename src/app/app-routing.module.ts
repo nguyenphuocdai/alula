@@ -9,6 +9,7 @@ const routes: Routes = [
 
   {path: '', redirectTo: '', pathMatch: 'full'},
   {path: '', loadChildren: './pages/pages.module#PagesModule'},
+  {path: 'admin', loadChildren: './pages/pages.module#PagesModule'},
 
 ];
 

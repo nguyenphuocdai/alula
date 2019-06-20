@@ -2,9 +2,9 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ShopComponent } from "./shop.component";
 import { ShopIndexComponent } from "./shop-index/shop-index.component";
-import { CartComponent } from "../shared/home/cart/cart.component";
-import { CheckoutComponent } from '../shared/shop/checkout/checkout.component';
-import { CheckoutResultComponent } from '../shared/shop/checkout-result/checkout-result.component';
+import { CartComponent } from 'src/app/shared/home/cart/cart.component';
+import { CheckoutComponent } from 'src/app/shared/shop/checkout/checkout.component';
+import { CheckoutResultComponent } from 'src/app/shared/shop/checkout-result/checkout-result.component';
 
 const routes: Routes = [
   {
