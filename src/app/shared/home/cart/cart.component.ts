@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
-import { CartService } from "../../../../core/_services/cart.service";
-import { product } from "../../../../core/_mockup/product";
-import { LocalStorageService } from "../../../../core/_services/local.storage.service";
-import { AppConstant } from "../../../../core/_const/app.constant";
 import { MatDialog } from "@angular/material";
 import { ConfirmComponent } from "../../shop/confirm/confirm.component";
+import { product } from 'src/app/core/_mockup/product';
+import { CartService } from 'src/app/core/_services/cart.service';
+import { LocalStorageService } from 'src/app/core/_services/local.storage.service';
+import { AppConstant } from 'src/app/core/_const/app.constant';
 
 @Component({
   selector: "app-cart",

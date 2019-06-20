@@ -1,0 +1,124 @@
+
+    <!--====================  breadcrumb area ====================-->
+    
+    <div class="breadcrumb-area pt-10 pb-10 border-bottom mb-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--=======  breadcrumb content  =======-->
+                    
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li class="has-child"><a href="index.html">Home</a></li>
+                            <li class="has-child"><a href="shop-left-sidebar.html">Shop</a></li>
+                            <li>Checkout result</li>
+                        </ul>
+                    </div>
+                    
+                    <!--=======  End of breadcrumb content  =======-->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--====================  End of breadcrumb area  ====================-->
+
+    <!--====================  product details area ====================-->
+    
+    <div class="product-details-area mb-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <!--=======  product details content  =======-->
+                                        
+                    <div class="product-detail-content">
+                        <h3 class="product-details-title mb-15">Thank you for your purchase !</h3>
+                        <!-- <p class="product-price product-price--big mb-10"><span class="discounted-price">$100.00</span> <span class="main-price discounted">$120.00</span></p> -->
+                        <p class="product-price product-price--big mb-10"><span class="discounted-price">${{billData.totalAmount}}</span></p>
+
+                        <div class="product-info-block mb-30">
+                            <div class="single-info">
+                                <span class="title">Bill No.:</span>
+                                <span class="value">${{billData.id}}</span>
+                            </div>
+                            <div class="single-info">
+                                <span class="title">Customer:</span>
+                                <span class="value"><a href="#">{{billData.firstname + billData.lastname}}</a></span>
+                            </div>
+                            <div class="single-info">
+                                <span class="title">Method payment:</span>
+                                <span class="value">{{billData.methodPayment}}</span>
+                            </div>
+                            <div class="single-info">
+                                <span class="title">Email order:</span>
+                                <span class="value stock-red">{{billData.email}}</span>
+                            </div>
+                        </div>
+
+                        <div class="product-short-desc mb-25">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas consectetur inventore voluptatem dignissimos nemo repellendus est, harum maiores veritatis quidem.</p>
+                        </div>
+                        <div class="product-details-feature-wrapper d-flex justify-content-center text-left mt-20">
+                            <!--=======  single icon feature  =======-->
+                                
+                            <div class="single-icon-feature single-icon-feature--product-details">
+                                <div class="single-icon-feature__icon">
+                                    <img src="assets/img/icons/free-shipping.png" class="img-fluid" alt="">
+                                </div>
+                                <div class="single-icon-feature__content">
+                                    <p class="feature-text">Free Shipping</p>
+                                    <p class="feature-text">Ships Today</p>
+                                </div>
+                            </div>
+                            
+                            <!--=======  End of single icon feature  =======-->
+
+                            <!--=======  single icon feature  =======-->
+                                
+                            <div class="single-icon-feature single-icon-feature--product-details ml-30 ml-xs-0 ml-xxs-0">
+                                <div class="single-icon-feature__icon">
+                                    <img src="assets/img/icons/return.png" class="img-fluid" alt="">
+                                </div>
+                                <div class="single-icon-feature__content">
+                                    <p class="feature-text">Easy</p>
+                                    <p class="feature-text">Returns</p>
+                                </div>
+                            </div>
+                            
+                            <!--=======  End of single icon feature  =======-->
+
+                            <!--=======  single icon feature  =======-->
+                                
+                            <div class="single-icon-feature single-icon-feature--product-details ml-30 ml-xs-0 ml-xxs-0">
+                                <div class="single-icon-feature__icon">
+                                    <img src="assets/img/icons/guarantee.png" class="img-fluid" alt="">
+                                </div>
+                                <div class="single-icon-feature__content">
+                                    <p class="feature-text">Lowest Price</p>
+                                    <p class="feature-text">Guarantee</p>
+                                </div>
+                            </div>
+                            
+                            <!--=======  End of single icon feature  =======-->
+                        </div>
+
+                        <div class="social-share-buttons mt-20">
+                            <h3>share this product</h3>
+                            <ul>
+                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!--=======  End of product details content  =======-->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--====================  End of product details area  ====================-->
+

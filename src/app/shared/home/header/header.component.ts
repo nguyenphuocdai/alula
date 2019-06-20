@@ -1,14 +1,14 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from "@angular/core";
-import { AuthenticationService } from "../../../../core/_services";
-import { User } from "../../../../core/_models";
 import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
 import { CartService } from "src/app/core/_services/cart.service";
 import { product } from "src/app/core/_mockup/product";
-import { AppConstant } from "../../../../core/_const/app.constant";
-import { LocalStorageService } from "../../../../core/_services/local.storage.service";
 import { MatDialog } from '@angular/material';
 import { ConfirmComponent } from '../../shop/confirm/confirm.component';
+import { User } from 'src/app/core/_models';
+import { AuthenticationService } from 'src/app/core/_services';
+import { LocalStorageService } from 'src/app/core/_services/local.storage.service';
+import { AppConstant } from 'src/app/core/_const/app.constant';
 declare var $: any;
 
 @Component({
