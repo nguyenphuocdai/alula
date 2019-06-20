@@ -385,14 +385,14 @@
     =============================================*/
     
     
-    $('[name="payment-method"]').on('click', function () {
+    // $('[name="payment-method"]').on('click', function () {
 
-        var $value = $(this).attr('value');
+    //     var $value = $(this).attr('value');
 
-        $('.single-method p').slideUp();
-        $('[data-method="' + $value + '"]').slideDown();
+    //     $('.single-method p').slideUp();
+    //     $('[data-method="' + $value + '"]').slideDown();
 
-    });
+    // });
     
     
     /*=====  End of payment  method select  ======*/
@@ -402,13 +402,13 @@
     =            shipping form toggle            =
     =============================================*/
     
-	$('[data-shipping]').on('click', function () {
-		if ($('[data-shipping]:checked').length > 0) {
-			$('#shipping-form').slideDown();
-		} else {
-			$('#shipping-form').slideUp();
-		}
-	});
+	// $('[data-shipping]').on('click', function () {
+	// 	if ($('[data-shipping]:checked').length > 0) {
+	// 		$('#shipping-form').slideDown();
+	// 	} else {
+	// 		$('#shipping-form').slideUp();
+	// 	}
+	// });
     /*=====  End of shipping form toggle  ======*/
 
 

@@ -7,6 +7,8 @@ import { CartService } from "src/app/core/_services/cart.service";
 import { product } from "src/app/core/_mockup/product";
 import { AppConstant } from "../../../../core/_const/app.constant";
 import { LocalStorageService } from "../../../../core/_services/local.storage.service";
+import { MatDialog } from '@angular/material';
+import { ConfirmComponent } from '../../shop/confirm/confirm.component';
 declare var $: any;
 
 @Component({
@@ -26,7 +28,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     private authenticationService: AuthenticationService,
     private localstorage: LocalStorageService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(
       user => {
@@ -35,27 +38,15 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     );
 
-    this.cartSubscription = this.cartService.currentCart.subscribe(
-      products => {
-        this.cartProducts = products;
-        let cartProducts = this.cartProducts;
-
-        if (cartProducts.length > 0) {
-          let total = 0;
-          for (var i in cartProducts) {
-            if (cartProducts.hasOwnProperty(i)) {
-              total += cartProducts[i].priceDiscount;
-            }
-          }
-          this.totalAmount = Number(total);
-        }
-      }
-    );
+    this.cartSubscription = this.cartService.currentCart.subscribe(products => {
+      this.cartProducts = products;
+      this.totalAmount = this.handleTotalAmount(this.cartProducts);
+    });
   }
-  ngOnInit() { }
+  ngOnInit() {}
 
   ngAfterViewInit(): void {
-    $("#small-cart-trigger").on("click", function (event) {
+    $("#small-cart-trigger").on("click", function(event) {
       event.stopPropagation();
       $(this).toggleClass("active");
       $(this)
@@ -70,7 +61,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   updateUserDropdown() {
     setTimeout(() => {
-      $("#user-options-02").on("click", function (event) {
+      $("#user-options-02").on("click", function(event) {
         event.stopPropagation();
         $(this)
           .siblings()
@@ -80,7 +71,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
     setTimeout(() => {
       if ($("#user-options").length > 0) {
-        $("#user-options").on("click", function (event) {
+        $("#user-options").on("click", function(event) {
           event.stopPropagation();
           $(this)
             .siblings()
@@ -99,5 +90,33 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     let index = this.cartProducts.findIndex(x => x.id === item.id);
     this.cartProducts.splice(index, 1);
     this.localstorage.set(AppConstant.CART_PRODUCTS, this.cartProducts);
+    this.totalAmount = this.handleTotalAmount(this.cartProducts);
+  }
+
+  handleTotalAmount(cartProductArrray: product[]) {
+    let cartProducts = cartProductArrray;
+
+    if (cartProducts.length > 0) {
+      let total = 0;
+      for (var i in cartProducts) {
+        if (cartProducts.hasOwnProperty(i)) {
+          total += cartProducts[i].priceDiscount * cartProducts[i].quatity;
+        }
+      }
+      return Number(total);
+    }
+    return 0;
+  }
+  openDialog(item) {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: "400px",
+      data: { name: "name" }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.removeItemCart(item);
+      }
+    });
   }
 }

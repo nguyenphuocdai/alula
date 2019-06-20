@@ -172,7 +172,7 @@
                                                   <p class="cart-name"><a href="javascript:void(0)">{{item.name}}</a></p>
                                                   <p class="cart-quantity"><span class="quantity-mes">{{item.quatity}} x </span> {{item.priceDiscount ? item.priceDiscount : item.price}}</p>
                                               </div>
-                                              <a href="javascript:void(0)" class="remove-icon"><i class="ion-close-round" (click)="removeItemCart(item)"></i></a>
+                                              <a href="javascript:void(0)" class="remove-icon"><i class="ion-close-round" (click)="openDialog(item)"></i></a>
                                           </div>
 
                                       </div>
@@ -201,7 +201,7 @@
 
                                           <div class="cart-buttons">
                                               <a href="javascript:void(0)" routerLink="/shop/cart" class="theme-button">View Cart</a>
-                                              <a href="javascript:void(0)" class="theme-button">Checkout</a>
+                                              <a href="javascript:void(0)" *ngIf="cartProducts.length > 0" routerLink="/shop/checkout" class="theme-button">Checkout</a>
                                           </div>
                                       </div>
 

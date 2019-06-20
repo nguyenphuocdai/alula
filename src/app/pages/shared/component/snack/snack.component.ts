@@ -11,7 +11,6 @@ export class SnackComponent implements OnInit {
   constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) { }
 
   ngOnInit() {
-    console.log(this.data);
   }
 
 }

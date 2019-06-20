@@ -21,9 +21,11 @@ import { LoginComponent } from "./home/login/login.component";
 import { RegisterComponent } from "./home/register/register.component";
 import { CartComponent } from "./home/cart/cart.component";
 import { ProductListComponent } from "./shop/product-list/product-list.component";
-import { CartService } from 'src/app/core/_services/cart.service';
-import { ProductItemComponent } from './shop/product-item/product-item.component';
-import { SnackComponent } from './component/snack/snack.component';
+import { ProductItemComponent } from "./shop/product-item/product-item.component";
+import { SnackComponent } from "./component/snack/snack.component";
+import { CheckoutComponent } from "./shop/checkout/checkout.component";
+import { CheckoutResultComponent } from "./shop/checkout-result/checkout-result.component";
+import { ConfirmComponent } from "./shop/confirm/confirm.component";
 
 @NgModule({
   declarations: [
@@ -45,7 +47,10 @@ import { SnackComponent } from './component/snack/snack.component';
     CartComponent,
     ProductListComponent,
     ProductItemComponent,
-    SnackComponent
+    SnackComponent,
+    CheckoutComponent,
+    CheckoutResultComponent,
+    ConfirmComponent
   ],
   exports: [
     HeaderComponent,
@@ -67,9 +72,12 @@ import { SnackComponent } from './component/snack/snack.component';
     CartComponent,
     ProductListComponent,
     ProductItemComponent,
-    SnackComponent
+    SnackComponent,
+    CheckoutComponent,
+    CheckoutResultComponent,
+    ConfirmComponent
   ],
-  entryComponents: [ProductModalComponent, SnackComponent],
+  entryComponents: [ProductModalComponent, SnackComponent, ConfirmComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,

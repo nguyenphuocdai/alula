@@ -25,7 +25,9 @@ export class CartService {
   //public get currentCartProducts(): product[] {
   //  return this.cartProductsSubject.value;
   //}
-
+  clearCartProducts(){
+    this.cartProductsSubject.next([]);
+  }
   addProduct(_product: product) {
     this.Products = this.localStorageService.get(AppConstant.CART_PRODUCTS);
 
