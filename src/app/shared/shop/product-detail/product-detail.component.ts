@@ -1,14 +1,20 @@
-import { product } from './../../../core/_mockup/product';
+import { PNotifyService } from "./../../../core/_services/pnotify.service";
+import { product } from "./../../../core/_mockup/product";
 import { ProductSerivce } from "./../../../core/_services/product.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
 import { LocalStorageService } from "src/app/core/_services/local.storage.service";
 import * as $ from "jquery";
 import "slick-carousel";
-import { SnackComponent } from '../../component/snack/snack.component';
-import { ConfirmComponent } from '../confirm/confirm.component';
-import { CartService } from 'src/app/core/_services/cart.service';
-import { MatSnackBar, MatDialog, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material';
+import { SnackComponent } from "../../component/snack/snack.component";
+import { ConfirmComponent } from "../confirm/confirm.component";
+import { CartService } from "src/app/core/_services/cart.service";
+import {
+  MatSnackBar,
+  MatDialog,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition
+} from "@angular/material";
 
 @Component({
   selector: "app-product-detail",
@@ -19,19 +25,15 @@ export class ProductDetailComponent implements OnInit {
   id: number;
   sub: any;
   item: any;
-  Products: product[] [];
-  durationInSeconds = 5;
-  horizontalPosition: MatSnackBarHorizontalPosition = "right";
-  verticalPosition: MatSnackBarVerticalPosition = "top";
-  
+  Products: product[][];
+
   constructor(
     private route: ActivatedRoute,
-    private localStorageService: LocalStorageService,
     private productService: ProductSerivce,
     private _cartService: CartService,
-    private _snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private PNotify: PNotifyService
   ) {
     this.sub = this.route.params.subscribe(params => {
       this.id = params["id"];
@@ -46,17 +48,15 @@ export class ProductDetailComponent implements OnInit {
         }
       });
     });
-    this.router.events.subscribe((evt) => {
+    this.router.events.subscribe(evt => {
       if (!(evt instanceof NavigationEnd)) {
-          return;
+        return;
       }
-      window.scrollTo(0, 0)
-  });
+      window.scrollTo(0, 0);
+    });
   }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   AddProduct(_product: product) {
     _product.added = true;
@@ -77,12 +77,11 @@ export class ProductDetailComponent implements OnInit {
     });
   }
   openSnackBar() {
-    this._snackBar.openFromComponent(SnackComponent, {
-      duration: 5000,
-      data: "Add item to cart successfully !",
-      verticalPosition: this.verticalPosition,
-      horizontalPosition: this.horizontalPosition
-    });
+    this.PNotify.getNotify(
+      "success",
+      "Thông báo",
+      "Thêm sản phẩm vào giỏ hàng thành công !"
+    );
   }
 
   ngAfterViewInit(): void {

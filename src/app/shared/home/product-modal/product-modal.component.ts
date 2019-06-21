@@ -1,3 +1,4 @@
+import { PNotifyService } from './../../../core/_services/pnotify.service';
 import { Component, OnInit, AfterViewInit, Inject } from "@angular/core";
 import {
   MatDialogRef,
@@ -19,16 +20,14 @@ import 'slick-carousel';
   styleUrls: ["./product-modal.component.scss"]
 })
 export class ProductModalComponent implements OnInit, AfterViewInit {
-  durationInSeconds = 5;
-  horizontalPosition: MatSnackBarHorizontalPosition = "right";
-  verticalPosition: MatSnackBarVerticalPosition = "top";
   item: product;
   constructor(
     public dialogProductModalRef: MatDialogRef<ProductModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _cartService: CartService,
     private _snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private PNotify: PNotifyService
   ) {}
 
   ngOnInit() {
@@ -44,12 +43,7 @@ export class ProductModalComponent implements OnInit, AfterViewInit {
   }
 
   openSnackBar() {
-    this._snackBar.openFromComponent(SnackComponent, {
-      duration: 5000,
-      data: "Add item to cart successfully !",
-      verticalPosition: this.verticalPosition,
-      horizontalPosition: this.horizontalPosition
-    });
+    this.PNotify.getNotify("success", "Thông báo", "Thêm sản phẩm vào giỏ hàng thành công !")
   }
   openDialog(_product: product) {
     const dialogRef = this.dialog.open(ConfirmComponent, {

@@ -1,3 +1,5 @@
+import { PNotifyService } from './../../../core/_services/pnotify.service';
+import { PNotify } from 'pnotify/dist/es/PNotify';
 import { Component, OnInit } from "@angular/core";
 import {
   MatDialog,
@@ -18,14 +20,12 @@ import { ConfirmComponent } from "../../shop/confirm/confirm.component";
 })
 export class ProductDealsComponent implements OnInit {
   Products: product[];
-  durationInSeconds = 5;
-  horizontalPosition: MatSnackBarHorizontalPosition = "right";
-  verticalPosition: MatSnackBarVerticalPosition = "top";
 
   constructor(
     private _cartService: CartService,
     private _snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private PNotify : PNotifyService
   ) {}
 
   ngOnInit() {
@@ -47,12 +47,7 @@ export class ProductDealsComponent implements OnInit {
   }
 
   openSnackBar() {
-    this._snackBar.openFromComponent(SnackComponent, {
-      duration: 5000,
-      data: "Add item to cart successfully !",
-      verticalPosition: this.verticalPosition,
-      horizontalPosition: this.horizontalPosition
-    });
+    this.PNotify.getNotify("success", "Thông báo", "Thêm sản phẩm vào giỏ hàng thành công !")
   }
   openDialog(_product: product) {
     const dialogRef = this.dialog.open(ConfirmComponent, {

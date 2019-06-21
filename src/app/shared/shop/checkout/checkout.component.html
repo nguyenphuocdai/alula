@@ -9,8 +9,8 @@
                     
                     <div class="breadcrumb-content">
                         <ul>
-                            <li class="has-child"><a href="index.html">Home</a></li>
-                            <li>Checkout</li>
+                            <li class="has-child"><a href="javascript:void(0)">Trang chủ</a></li>
+                            <li>Thanh toán</li>
                         </ul>
                     </div>
                     
@@ -36,84 +36,84 @@
                                 
                                 <!-- Billing Address -->
                                 <div id="billing-form" class="mb-40">
-                                    <h4 class="checkout-title">Billing Address</h4>
+                                    <h4 class="checkout-title">Địa chỉ hóa đơn</h4>
     
                                     <div class="row">
     
                                         <div class="col-md-6 col-12 mb-20">
-                                            <label>First Name*</label>
+                                            <label>Họ*</label>
                                             <input type="text" [ngClass]="{'hasError': !checkoutForm.controls['firstname'].valid && checkoutForm.controls['firstname'].touched}"
-                                             formControlName="firstname" placeholder="First Name">
+                                             formControlName="firstname" placeholder="Nhập họ">
                                         </div>
     
                                         <div class="col-md-6 col-12 mb-20">
-                                            <label>Last Name*</label>
+                                            <label>Tên*</label>
                                             <input type="text" [ngClass]="{'hasError': !checkoutForm.controls['lastname'].valid && checkoutForm.controls['lastname'].touched}"
-                                            formControlName="lastname" placeholder="Last Name">
+                                            formControlName="lastname" placeholder="Nhập tên">
                                         </div>
     
                                         <div class="col-md-6 col-12 mb-20">
-                                            <label>Email Address*</label>
+                                            <label>Địa chỉ Email*</label>
                                             <input type="email" formControlName="email"
                                             [ngClass]="{'hasError': !checkoutForm.controls['email'].valid && checkoutForm.controls['email'].touched}"
-                                            placeholder="Email Address">
+                                            placeholder="Nhập địa chỉ Email">
                                         </div>
     
                                         <div class="col-md-6 col-12 mb-20">
-                                            <label>Phone no*</label>
+                                            <label>Số điện thoại*</label>
                                             <input type="text" formControlName="phonenumber"
                                             [ngClass]="{'hasError': !checkoutForm.controls['phonenumber'].valid && checkoutForm.controls['phonenumber'].touched}"
-                                            placeholder="Phone number">
+                                            placeholder="Nhập số điện thoại">
                                         </div>
     
                                         <div class="col-12 mb-20">
-                                            <label>Company Name</label>
+                                            <label>Tên công ty</label>
                                             <input type="text" formControlName="company"
-                                            placeholder="Company Name">
+                                            placeholder="Nhập tên công ty">
                                         </div>
     
                                         <div class="col-12 mb-20">
-                                            <label>Address*</label>
+                                            <label>Địa chỉ*</label>
                                             <input type="text" formControlName="address01"
                                             [ngClass]="{'hasError': !checkoutForm.controls['address01'].valid && checkoutForm.controls['address01'].touched}" 
-                                            placeholder="Address line 1">
+                                            placeholder="Nhập địa chỉ chính">
                                             <input type="text" formControlName="address02"
                                             [ngClass]="{'hasError': !checkoutForm.controls['address02'].valid && checkoutForm.controls['address02'].touched}" 
-                                            placeholder="Address line 2">
+                                            placeholder="Nhập địa chỉ phụ">
                                         </div>
     
                                         <div class="col-md-6 col-12 mb-20">
-                                            <label>Country*</label>
+                                            <label>Tỉnh/thành phố*</label>
                                             <select class="nice-select" formControlName="country"
                                             [ngClass]="{'hasError': !checkoutForm.controls['country'].valid && checkoutForm.controls['country'].touched}" 
                                             >
-                                                <option>Bangladesh</option>
-                                                <option>China</option>
-                                                <option>country</option>
-                                                <option>India</option>
-                                                <option>Japan</option>
+                                                <option value="CT">Cần Thơ</option>
+                                                <option value="HCM">Hồ Chí Minh</option>
+                                                <option value="HN">Hà Nội</option>
+                                                <option value="AG">An Giang</option>
+                                                <option value="DN">Đà Nẵng</option>
                                             </select>
                                         </div>
     
                                         <div class="col-md-6 col-12 mb-20">
-                                            <label>Town/City*</label>
+                                            <label>Quận/Huyện*</label>
                                             <input type="text" formControlName="city"
                                             [ngClass]="{'hasError': !checkoutForm.controls['city'].valid && checkoutForm.controls['city'].touched}" 
-                                            placeholder="Town/City">
+                                            placeholder="Nhập Quận/Huyện*">
                                         </div>
     
                                         <div class="col-md-6 col-12 mb-20">
-                                            <label>State*</label>
+                                            <label>Phường/xã*</label>
                                             <input type="text" formControlName="state"
                                             [ngClass]="{'hasError': !checkoutForm.controls['state'].valid && checkoutForm.controls['state'].touched}" 
-                                            placeholder="State">
+                                            placeholder="Nhập Phường/xã">
                                         </div>
     
                                         <div class="col-md-6 col-12 mb-20">
-                                            <label>Zip Code*</label>
+                                            <label>Mã bưu điện*</label>
                                             <input type="text" formControlName="zipcode" 
                                             [ngClass]="{'hasError': !checkoutForm.controls['zipcode'].valid && checkoutForm.controls['zipcode'].touched}" 
-                                            placeholder="Zip Code">
+                                            placeholder="Nhập mã bưu điện">
                                         </div>
     
                                         <!-- <div class="col-12 mb-20">
@@ -206,11 +206,11 @@
                                     <!-- Cart Total -->
                                     <div class="col-12 mb-60">
                                     
-                                        <h4 class="checkout-title">Cart Total</h4>
+                                        <h4 class="checkout-title">Tổng giỏ hàng</h4>
                                 
                                         <div class="checkout-cart-total">
     
-                                            <h4>Product <span>Total</span></h4>
+                                            <h4>Sản phẩm <span>Tổng tiền</span></h4>
                                             
                                             <ul>
                                                 <li *ngFor="let item of cartProducts">
@@ -219,10 +219,10 @@
                                                 </li>
                                             </ul>
                                             
-                                            <p>Sub Total <span>${{totalAmount}}</span></p>
-                                            <p>Shipping Fee <span>$00.00</span></p>
+                                            <p>Tạm tính<span>${{totalAmount}}</span></p>
+                                            <p>Phí vận chuyển <span>$00.00</span></p>
                                             
-                                            <h4>Grand Total <span>${{totalAmount}}</span></h4>
+                                            <h4>Tổng cộng <span>${{totalAmount}}</span></h4>
                                             
                                         </div>
                                         
@@ -231,43 +231,43 @@
                                     <!-- Payment Method -->
                                     <div class="col-12">
                                     
-                                        <h4 class="checkout-title">Payment Method</h4>
+                                        <h4 class="checkout-title">Chọn hình thức thanh toán</h4>
                                 
                                         <div class="checkout-payment-method">
                                             
                                             <div class="single-method">
                                                 <input type="radio" id="payment_check" formControlName="methodPayment" class="payment-method" value="check">
-                                                <label for="payment_check">Check Payment</label>
-                                                <p data-method="check">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
+                                                <label for="payment_check">Check - Payment</label>
+                                                <p data-method="check">Thanh toán đơn hàng bằng ký séc để thanh toán cho đơn hàng được đặt</p>
                                             </div>
                                             
                                             <div class="single-method">
                                                 <input type="radio" id="payment_bank" formControlName="methodPayment" class="payment-method" value="bank">
-                                                <label for="payment_bank">Direct Bank Transfer</label>
-                                                <p data-method="bank">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
+                                                <label for="payment_bank">Thanh toán trực tuyến qua Ngân hàng</label>
+                                                <p data-method="bank">Chuyển khoản ngân hàng trực tiếp, hoặc Hệ thống thanh toán bù trừ tài khoản ngân hàng (BACS), là một cổng không yêu cầu thanh toán trực tuyến.</p>
                                             </div>
                                             
                                             <div class="single-method">
                                                 <input type="radio" id="payment_cash" formControlName="methodPayment" class="payment-method" value="cash">
-                                                <label for="payment_cash">Cash on Delivery</label>
-                                                <p data-method="cash">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
+                                                <label for="payment_cash">Thanh toán khi nhận hàng</label>
+                                                <p data-method="cash">Hình thức khách hàng đặt hàng và thanh toán khi đơn hàng được giao.</p>
                                             </div>
                                             
                                             <div class="single-method">
                                                 <input type="radio" id="payment_paypal" formControlName="methodPayment" class="payment-method" value="paypal">
                                                 <label for="payment_paypal">Paypal</label>
-                                                <p data-method="paypal">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
+                                                <p data-method="paypal">Hình thức thanh toán chuyển khoản qua Paypal</p>
                                             </div>
                                             
                                             <div class="single-method">
                                                 <input type="radio" id="payment_payoneer" formControlName="methodPayment" class="payment-method" value="payoneer">
                                                 <label for="payment_payoneer">Payoneer</label>
-                                                <p data-method="payoneer">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
+                                                <p data-method="payoneer">Hình thức thanh toán Payoneer: Phí thấp, an toàn, đáng tin cậy ...</p>
                                             </div>
                                             
                                         </div>
                                         <div class="col-md-12 form-group">
-                                                <button class="place-order" [disabled]="submitted" type="submit" >Place order</button>
+                                                <button class="place-order" [disabled]="submitted" type="submit" >ĐẶT HÀNG</button>
                                                 <img *ngIf="submitted" class="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                                             </div>
                                     </div>

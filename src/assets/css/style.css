@@ -2988,7 +2988,7 @@ select
 /*----------  default style  ----------*/
 .theme-button
 {
-    font-family: 'IBM Plex Sans', sans-serif;
+    /* font-family: 'IBM Plex Sans', sans-serif; */
     font-size: 16px;
     font-weight: 700;
     line-height: 50px;
@@ -3648,10 +3648,10 @@ a.scroll-top:after
 
 .hero-slider-content p.slider-title--big-bold
 {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 60px;
+    /* font-family: 'IBM Plex Sans', sans-serif; */
+    font-size: 40px;
     font-weight: 600;
-    line-height: 60px;
+    line-height: 40px;
 
     margin-bottom: 5px; 
 

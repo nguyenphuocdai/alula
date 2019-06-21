@@ -7,8 +7,8 @@
                     
                     <div class="breadcrumb-content">
                         <ul>
-                            <li class="has-child"><a href="javascript:void(0)">Home</a></li>
-                            <li>Login</li>
+                            <li class="has-child"><a href="javascript:void(0)">Trang chủ</a></li>
+                            <li>Đăng nhập</li>
                         </ul>
                     </div>
                     
@@ -26,12 +26,12 @@
                     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
                         <div class="login-form">
-                            <h4 class="login-title">Login</h4>
+                            <h4 class="login-title">Đăng nhập</h4>
 
                             <div class="row">
                                 <div class="col-md-12 col-12 mb-20">
-                                    <label>Username</label>
-                                    <input class="mb-0" formControlName="username" type="text" placeholder="User name"
+                                    <label>Tài khoản</label>
+                                    <input class="mb-0" formControlName="username" type="text" placeholder="Nhập tài khoản"
                                     [ngClass]="{ 'is-invalid': submitted && f.username.errors }" 
                                     >
                                     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
@@ -39,30 +39,30 @@
                                     </div>
                                 </div>
                                 <div class="col-12 mb-20">
-                                    <label>Password</label>
-                                    <input class="mb-0" formControlName="password" type="password" placeholder="Password"
+                                    <label>Mật khẩu</label>
+                                    <input class="mb-0" formControlName="password" type="password" placeholder="Nhập mật khẩu"
                                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
                                     >
 
                                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                            <div *ngIf="f.password.errors.required">Password is required</div>
+                                            <div *ngIf="f.password.errors.required">Mật khẩu là trường bắt buộc nhập</div>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     
                                     <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
                                         <input type="checkbox" id="remember_me">
-                                        <label for="remember_me">Remember me</label>
+                                        <label for="remember_me">Ghi nhớ đăng nhập</label>
                                     </div>
                                     
                                 </div>
 
                                 <div class="col-md-4 mt-10 mb-20 text-left text-md-right">
-                                    <a href="#"> Forgotten pasward?</a>
+                                    <a href="javascript:void(0)"> Quên mật khẩu?</a>
                                 </div>
 
                                 <div class="col-md-12 form-group">
-                                    <button type="submit" [disabled]="loading" class="register-button mt-0">Login</button>
+                                    <button type="submit" [disabled]="loading" class="register-button mt-0">ĐĂNG NHẬP</button>
                                     <img *ngIf="loading" class="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                                 </div>
 

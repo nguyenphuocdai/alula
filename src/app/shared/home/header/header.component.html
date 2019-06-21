@@ -15,7 +15,7 @@
                                 <!--=======  header top social links  =======-->
 
                                 <div class="header-top-social-links">
-                                    <span class="follow-text mr-15">Follow Us:</span>
+                                    <!-- <span class="follow-text mr-15">Follow Us:</span> -->
                                     <!--=======  social link small  =======-->
 
                                     <ul class="social-link-small">
@@ -43,15 +43,15 @@
                                 <div class="headertop-dropdown-container justify-content-center justify-content-md-end">
                                     <div class="header-top-single-dropdown" *ngIf="!currentUser">
                                         <a href="javascript:void(0)" class="active-dropdown-trigger"
-                                            id="user-options">My Account <i class="ion-ios-arrow-down"></i></a>
+                                            id="user-options">Đăng nhập - Đăng ký <i class="ion-ios-arrow-down"></i></a>
                                         <!--=======  dropdown menu items  =======-->
 
                                         <div
                                             class="header-top-single-dropdown__dropdown-menu-items deactive-dropdown-menu extra-small-mobile-fix">
                                             <ul>
                                                 <li><a href="javascript:void(0)"
-                                                        routerLink="/home/register">Register</a></li>
-                                                <li><a href="javascript:void(0)" routerLink="/home/login">Login</a></li>
+                                                        routerLink="/home/register">Đăng ký</a></li>
+                                                <li><a href="javascript:void(0)" routerLink="/home/login">Đăng nhập</a></li>
                                             </ul>
                                         </div>
 
@@ -66,9 +66,8 @@
                                         <div
                                             class="header-top-single-dropdown__dropdown-menu-items deactive-dropdown-menu extra-small-mobile-fix">
                                             <ul>
-                                                <li><a href="javascript:void(0)" [routerLink]="['/home/account']">My
-                                                        Account</a></li>
-                                                <li><a href="javascript:void(0)" (click)="logout()">Logout</a></li>
+                                                <li><a href="javascript:void(0)" [routerLink]="['/home/account']">Tài khoản của tôi</a></li>
+                                                <li><a href="javascript:void(0)" (click)="logout()">Đăng xuất</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -76,8 +75,8 @@
                                     <span class="separator">|</span>
                                     <div class="header-top-single-dropdown">
                                         <a href="javascript:void(0)" class="active-dropdown-trigger"
-                                            id="language-options"> <img src="../../../../assets/img/icons/en-gb.png"
-                                                alt=""> En-Gb <i class="ion-ios-arrow-down"></i></a>
+                                            id="language-options"> <img src="../../../../assets/img/icons/vi-VN.png"
+                                                alt=""> vi-VN <i class="ion-ios-arrow-down"></i></a>
                                         <!--=======  dropdown menu items  =======-->
 
                                         <div
@@ -87,6 +86,8 @@
                                                             alt=""> English </a></li>
                                                 <li><a href="#"> <img src="../../../../assets/img/icons/de-de.png"
                                                             alt=""> Germany </a></li>
+                                                            <li><a href="#"> <img src="../../../../assets/img/icons/vi-VN.png"
+                                                                alt=""> Tiếng Việt </a></li>
                                             </ul>
                                         </div>
 
@@ -95,7 +96,7 @@
                                     <span class="separator">|</span>
                                     <div class="header-top-single-dropdown">
                                         <a href="javascript:void(0)" class="active-dropdown-trigger"
-                                            id="currency-options">USD <i class="ion-ios-arrow-down"></i></a>
+                                            id="currency-options">VNĐ <i class="ion-ios-arrow-down"></i></a>
                                         <!--=======  dropdown menu items  =======-->
 
                                         <div
@@ -104,6 +105,7 @@
                                                 <li><a href="#">€ EURO</a></li>
                                                 <li><a href="#">£ Pound Sterling</a></li>
                                                 <li><a href="#">$ US Dollar</a></li>
+                                                <li><a href="#">VNĐ</a></li>
                                             </ul>
                                         </div>
 
@@ -162,7 +164,7 @@
                                     </div>
 
                                     <div class="text">
-                                        <span>Customer Support</span>
+                                        <span>Hỗ trợ khách hàng</span>
                                         <p>(08) 12 345 789</p>
                                     </div>
                                 </div>
@@ -221,7 +223,7 @@
                                                       <td class="text-right">$25.80</td>
                                                   </tr>-->
                                                     <tr>
-                                                        <td class="text-left">Total :</td>
+                                                        <td class="text-left">Tổng tiền :</td>
                                                         <td class="text-right">${{totalAmount}}</td>
                                                     </tr>
                                                 </tbody>
@@ -229,11 +231,11 @@
 
                                             <div class="cart-buttons">
                                                 <a href="javascript:void(0)" *ngIf="cartProducts.length > 0"
-                                                    routerLink="/shop/cart" class="theme-button">View Cart</a>
+                                                    routerLink="/shop/cart" class="theme-button">Xem giỏ hàng</a>
                                                 <a href="javascript:void(0)" *ngIf="cartProducts.length === 0"
-                                                    routerLink="/shop" class="theme-button">Go to shop</a>
+                                                    routerLink="/shop" class="theme-button">Mua sắm</a>
                                                 <a href="javascript:void(0)" *ngIf="cartProducts.length > 0"
-                                                    routerLink="/shop/checkout" class="theme-button">Checkout</a>
+                                                    routerLink="/shop/checkout" class="theme-button">Thanh toán</a>
                                             </div>
                                         </div>
 
@@ -265,7 +267,7 @@
                     <div class="main-menu d-none d-lg-block">
                         <nav>
                             <ul>
-                                <li class="active"><a href="javascript:void(0)" routerLink="/">HOME</a>
+                                <li class="active"><a href="javascript:void(0)" routerLink="/">Trang chủ</a>
                                     <!--<ul class="sub-menu">
                                       <li><a href="index.html">Home Shop 1</a></li>
                                       <li><a href="index-2.html">Home Shop 2</a></li>
@@ -300,12 +302,12 @@
                                   </ul>
                               </li>-->
 
-                                <li class="menu-item-has-children"><a href="javascript:void(0)">CATEGORY</a>
+                                <li class="menu-item-has-children"><a href="javascript:void(0)">Loại sản phẩm</a>
                                     <ul class="mega-menu four-column">
-                                        <li><a href="#">Shop Grid</a>
+                                        <li><a href="#">Cây cảnh</a>
                                             <ul>
                                                 <li><a href="javascript:void(0)" routerLink="/shop"
-                                                        style="cursor: pointer">Bonsai</a></li>
+                                                        style="cursor: pointer">Shop cây cảnh</a></li>
                                             </ul>
                                         </li>
                                         <!--<li><a href="shop-list-left-sidebar.html">Shop List</a>
@@ -335,12 +337,12 @@
                                               <li><a href="single-product-slider-box.html">Slider Box</a></li>
                                           </ul>
                                       </li>-->
-                                        <li class="megamenu-banner d-none d-lg-block mt-30 w-100">
+                                        <!-- <li class="megamenu-banner d-none d-lg-block mt-30 w-100">
                                             <a href="shop-left-sidebar.html" class="mb-0">
                                                 <img src="../../../../assets/img/banners/img-bottom-menu.jpg"
                                                     class="img-fluid" alt="">
                                             </a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </li>
 

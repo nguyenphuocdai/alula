@@ -14228,7 +14228,7 @@ p .alternative-font {
 
 /* Links */
 a, a:hover, a:focus {
-	color: #CCC;
+	/* color: #CCC; */
 }
 
 /* Drop Caps */

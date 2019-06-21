@@ -7,8 +7,8 @@
                     
                     <div class="breadcrumb-content">
                         <ul>
-                            <li class="has-child"><a href="javascript:void(0)">Home</a></li>
-                            <li>Register</li>
+                            <li class="has-child"><a href="javascript:void(0)">Trang chủ</a></li>
+                            <li>Đăng ký</li>
                         </ul>
                     </div>
                     
@@ -23,15 +23,15 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
         <div class="login-form">
-            <h4 class="login-title">Register</h4>
+            <h4 class="login-title">Đăng ký</h4>
 
             <div class="row">
                 <div class="col-md-6 col-12 mb-20">
-                    <label>First Name</label>
+                    <label>Họ</label>
                     <input class="mb-0" formControlName="firstName" type="text" placeholder="First Name">
                 </div>
                 <div class="col-md-6 col-12 mb-20">
-                    <label>Last Name</label>
+                    <label>Tên</label>
                     <input class="mb-0" formControlName="lastName" type="text" placeholder="Last Name">
                 </div>
                 <!-- <div class="col-md-12 mb-20">
@@ -39,15 +39,15 @@
                     <input class="mb-0" type="email" placeholder="Email Address">
                 </div> -->
                 <div class="col-md-6 mb-20">
-                    <label>Username</label>
+                    <label>Tài khoản</label>
                     <input class="mb-0" type="username" formControlName="username" placeholder="Username">
                 </div>
                 <div class="col-md-6 mb-20">
-                    <label>Password</label>
+                    <label>Mật khẩu</label>
                     <input class="mb-0" type="password" formControlName="password" placeholder="Password">
                 </div>
                 <div class="col-12">
-                    <button [disabled]="loading" type="submit" class="register-button mt-0">Register</button>
+                    <button [disabled]="loading" type="submit" class="register-button mt-0">ĐĂNG KÝ</button>
 
                     <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                 </div>

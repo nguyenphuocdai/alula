@@ -6,10 +6,10 @@ declare var PNotify: any;
 
 @Injectable({ providedIn: "root" })
 export class PNotifyService {
-  getPNotify() {
-    PNotifyButtons; // Initiate the module. Important!
-    return PNotify;
-  }
+  // getPNotify() {
+  //   PNotifyButtons; // Initiate the module. Important!
+  //   return PNotify;
+  // }
 
   getNotify(type: string = "info", title: string = "", message: string = "") {
     (function($) {

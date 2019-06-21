@@ -4,7 +4,7 @@
       href="javascript:void(0)"
       [routerLink]="['/shop/product-detail', item.id]"
     >
-      <img src="{{ item.image }}" class="img-fluid" alt="" />
+      <img src="{{ item.image }}" class="img-fluid" alt=""/>
     </a>
 
     <span class="discount-label discount-label--green">-10%</span>
@@ -44,8 +44,8 @@
       <i class="ion-android-star"></i>
     </div>
     <p class="product-price">
-      <span class="discounted-price">{{ item.priceDiscount }}</span>
-      <span class="main-price discounted">{{ item.price }}</span>
+      <span class="discounted-price">{{ item.priceDiscount }}Đ</span>
+      <span class="main-price discounted">{{ item.price }}Đ</span>
     </p>
 
     <span class="cart-icon"

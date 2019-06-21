@@ -94,21 +94,24 @@
     //   });
     // });
     
-    $('#language-options').on('click', function(event){
-        event.stopPropagation();
-        $(this).siblings().toggleClass('deactive-dropdown-menu active-dropdown-menu');
-        $("#user-options").siblings().removeClass('active-dropdown-menu');
-        $("#currency-options").siblings().removeClass('active-dropdown-menu');
-        
+   
+    $(window).bind("load", function() {
+        $('#currency-options').on('click', function(event){
+            event.stopPropagation();
+            $(this).siblings().toggleClass('deactive-dropdown-menu active-dropdown-menu');
+            $("#language-options").siblings().removeClass('active-dropdown-menu');
+            $("#user-options").siblings().removeClass('active-dropdown-menu');
+            
+        });
+        $('#language-options').on('click', function(event){
+            event.stopPropagation();
+            $(this).siblings().toggleClass('deactive-dropdown-menu active-dropdown-menu');
+            $("#user-options").siblings().removeClass('active-dropdown-menu');
+            $("#currency-options").siblings().removeClass('active-dropdown-menu');
+            
+        });
     });
-    
-    $('#currency-options').on('click', function(event){
-        event.stopPropagation();
-        $(this).siblings().toggleClass('deactive-dropdown-menu active-dropdown-menu');
-        $("#language-options").siblings().removeClass('active-dropdown-menu');
-        $("#user-options").siblings().removeClass('active-dropdown-menu');
-        
-    });
+   
     
     // $('#small-cart-trigger').on('click', function(event){
     //     event.stopPropagation();

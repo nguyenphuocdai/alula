@@ -1,3 +1,4 @@
+import { PNotifyService } from "./../../../core/_services/pnotify.service";
 import { Component, OnInit, Input } from "@angular/core";
 import { product } from "src/app/core/_mockup/product";
 import { CartService } from "src/app/core/_services/cart.service";
@@ -17,13 +18,10 @@ import { ConfirmComponent } from "../confirm/confirm.component";
 })
 export class ProductItemComponent implements OnInit {
   @Input() item: product;
-  durationInSeconds = 5;
-  horizontalPosition: MatSnackBarHorizontalPosition = "right";
-  verticalPosition: MatSnackBarVerticalPosition = "top";
   constructor(
     private _cartService: CartService,
-    private _snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private PNotify: PNotifyService
   ) {}
 
   ngOnInit() {}
@@ -39,12 +37,11 @@ export class ProductItemComponent implements OnInit {
     this._cartService.removeProduct(_product.id);
   }
   openSnackBar() {
-    this._snackBar.openFromComponent(SnackComponent, {
-      duration: 5000,
-      data: "Add item to cart successfully !",
-      verticalPosition: this.verticalPosition,
-      horizontalPosition: this.horizontalPosition
-    });
+    this.PNotify.getNotify(
+      "success",
+      "Thông báo",
+      "Thêm sản phẩm vào giỏ hàng thành công !"
+    );
   }
   openDialog(_product: product) {
     const dialogRef = this.dialog.open(ConfirmComponent, {
