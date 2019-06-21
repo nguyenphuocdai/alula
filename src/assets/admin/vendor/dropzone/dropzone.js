@@ -3530,10 +3530,3 @@ function __guardMethod__(obj, methodName, transform) {
 }
 
 
-(function($) {
-  $(window).bind("load", function() {
-    $("#dropzone-example").dropzone({
-      url: "http://file.io"
-    });
-  });
-})(jQuery);

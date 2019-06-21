@@ -32,7 +32,8 @@
               "src/assets/admin/css/custom.css",
               "src/assets/admin/vendor/dropzone/basic.css",
               "src/assets/admin/vendor/datatables/media/css/dataTables.bootstrap4.css",
-              "src/assets/admin/vendor/dropzone/dropzone.css"
+              "src/assets/admin/vendor/dropzone/dropzone.css",
+              "src/assets/admin/vendor/pnotify/pnotify.custom.css"
             ],
             "scripts": [
               "src/assets/admin/vendor/popper/umd/popper.min.js",
@@ -59,7 +60,8 @@
               "src/assets/admin/vendor/datatables/extras/TableTools/JSZip-2.5.0/jszip.min.js",
               "src/assets/admin/vendor/datatables/extras/TableTools/pdfmake-0.1.32/pdfmake.min.js",
               "src/assets/admin/vendor/datatables/extras/TableTools/pdfmake-0.1.32/vfs_fonts.js",
-              "src/assets/admin/js/examples/examples.datatables.default.js"
+              "src/assets/admin/js/examples/examples.datatables.default.js",
+              "src/assets/admin/vendor/pnotify/pnotify.custom.js"
             ]
           },
           "configurations": {

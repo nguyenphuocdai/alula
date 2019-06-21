@@ -13,9 +13,8 @@
       <ul>
         <li>
           <a
-            data-toggle="modal"
-            data-target="#quick-view-modal-container"
             href="javascript:void(0)"
+            [routerLink]="['/shop/product-detail', item.id]"
             ><i class="icon-eye"></i
           ></a>
         </li>
@@ -53,82 +52,5 @@
       ><a href="javascript:void(0)" (click)="openDialog(item)"
         ><i class="icon-shopping-cart"></i></a
     ></span>
-  </div>
-</div>
-
-<!--=======  End of grid view product  =======-->
-
-<!--=======  grid view product  =======-->
-
-<div
-  class="single-slider-product single-slider-product--list-view list-view-product"
->
-  <div
-    class="single-slider-product__image single-slider-product--list-view__image"
-  >
-    <a href="single-product.html">
-      <img src="assets/img/products/medium10.jpg" class="img-fluid" alt="" />
-    </a>
-
-    <span class="discount-label discount-label--green">-10%</span>
-  </div>
-
-  <div
-    class="single-slider-product__content  single-slider-product--list-view__content"
-  >
-    <div class="single-slider-product--list-view__content__details">
-      <p class="product-title">
-        <a href="single-product.html">Cillum dolore garden lorem ipsum plant</a>
-      </p>
-      <div class="rating">
-        <i class="ion-android-star active"></i>
-        <i class="ion-android-star active"></i>
-        <i class="ion-android-star active"></i>
-        <i class="ion-android-star active"></i>
-        <i class="ion-android-star"></i>
-      </div>
-
-      <p class="short-desc">
-        {{ item.shortDesc }}
-      </p>
-    </div>
-
-    <div class="single-slider-product--list-view__content__actions">
-      <div class="availability mb-10">
-        <span class="availability-title">Availabe:</span>
-        <span class="availability-value">Out of stock</span>
-      </div>
-
-      <p class="product-price">
-        <span class="discounted-price">$50.00</span>
-        <span class="main-price discounted">$120.00</span>
-      </p>
-
-      <a
-        href="javascript:void(0)"
-        class="theme-button list-cart-button mb-10"
-        (click)="AddProduct(item)"
-        >Add to Cart</a
-      >
-
-      <div class="hover-icons">
-        <ul>
-          <li>
-            <a
-              data-toggle="modal"
-              data-target="#quick-view-modal-container"
-              href="javascript:void(0)"
-              ><i class="icon-eye"></i
-            ></a>
-          </li>
-          <li>
-            <a href="javascript:void(0)"><i class="icon-heart"></i></a>
-          </li>
-          <li>
-            <a href="javascript:void(0)"><i class="icon-sliders"></i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
   </div>
 </div>

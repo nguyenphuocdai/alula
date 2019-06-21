@@ -1,7 +1,7 @@
 import { product } from './../../../core/_mockup/product';
 import { ProductSerivce } from "./../../../core/_services/product.service";
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
 import { LocalStorageService } from "src/app/core/_services/local.storage.service";
 import * as $ from "jquery";
 import "slick-carousel";
@@ -30,7 +30,8 @@ export class ProductDetailComponent implements OnInit {
     private productService: ProductSerivce,
     private _cartService: CartService,
     private _snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {
     this.sub = this.route.params.subscribe(params => {
       this.id = params["id"];
@@ -45,9 +46,17 @@ export class ProductDetailComponent implements OnInit {
         }
       });
     });
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+          return;
+      }
+      window.scrollTo(0, 0)
+  });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
   AddProduct(_product: product) {
     _product.added = true;

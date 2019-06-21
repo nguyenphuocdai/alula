@@ -18,7 +18,14 @@ export class ProductSerivce {
   }
 
   getAllProducts(): Observable<any> {
-    this.Products = productsCollection.concat(productsNew);
+    let localProduct = this.localStorageService.get(AppConstant.ALL_PRODUCTS);
+    let mergeArray = localProduct
+      .concat(productsCollection)
+      .concat(productsNew);
+    this.Products = mergeArray.filter(function(item, pos) {
+      return mergeArray.indexOf(item) == pos;
+    });
+
     this.localStorageService.set(AppConstant.ALL_PRODUCTS, this.Products);
     return of(this.Products);
   }
@@ -26,7 +33,6 @@ export class ProductSerivce {
   generateUniqueID() {
     return new Date().valueOf();
   }
-
 
   subjectProducts(arrProducts) {
     console.log(arrProducts);
@@ -36,5 +42,18 @@ export class ProductSerivce {
   intervalOrders() {
     let intervalData = this.localStorageService.get(AppConstant.ALL_PRODUCTS);
     this.currentProductSubject.next(intervalData);
+  }
+
+  addProduct(product: product): boolean {
+    if (!product) {
+      return false;
+    }
+    let localProducts = this.localStorageService.get(AppConstant.ALL_PRODUCTS);
+    localProducts.push(product);
+    this.localStorageService.set(AppConstant.ALL_PRODUCTS, localProducts);
+    return true;
+  }
+  isString(val) {
+    return typeof val === "string";
   }
 }

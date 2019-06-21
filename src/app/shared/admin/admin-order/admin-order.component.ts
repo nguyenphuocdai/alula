@@ -1,6 +1,12 @@
 import { OrderSerivce } from "./../../../core/_services/order.service";
 import { LocalStorageService } from "./../../../core/_services/local.storage.service";
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectorRef,
+  AfterViewInit
+} from "@angular/core";
 import { Subscription } from "rxjs";
 
 @Component({
@@ -8,7 +14,7 @@ import { Subscription } from "rxjs";
   templateUrl: "./admin-order.component.html",
   styleUrls: ["./admin-order.component.scss"]
 })
-export class AdminOrderComponent implements OnInit, OnDestroy {
+export class AdminOrderComponent implements OnInit, OnDestroy, AfterViewInit {
   arrOrders: any;
   headerColumnKey: Array<string> = [];
   orderSubscription: Subscription;
@@ -45,6 +51,22 @@ export class AdminOrderComponent implements OnInit, OnDestroy {
     if (this.intervalTimer) {
       clearInterval(this.intervalTimer);
     }
+  }
+
+  ngAfterViewInit(): void {
+    (function($) {
+      "use strict";
+
+      var datatableInit = function() {
+        ($("#datatable-orders") as any).dataTable({
+          dom: '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p'
+        });
+      };
+
+      $(function() {
+        datatableInit();
+      });
+    }.apply(this, [jQuery]));
   }
 
   identify(index, item) {

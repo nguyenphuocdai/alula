@@ -36,6 +36,9 @@ export class AdminProductComponent implements OnInit, OnDestroy, AfterViewInit {
           if (k === "url") {
             continue;
           }
+          if(k === "image" && typeof this.arrProducts[0][k] === "object"){
+            continue;
+          }
           this.headerColumnKey.push(k);
         }
       }
@@ -52,9 +55,13 @@ export class AdminProductComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+
+    let dom = $("#datatable-default");
+    if(!dom){
+      return;
+    }
     (function($) {
       "use strict";
-
       var datatableInit = function() {
         ($("#datatable-default") as any).dataTable({
           dom: '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p'
@@ -69,7 +76,7 @@ export class AdminProductComponent implements OnInit, OnDestroy, AfterViewInit {
 
   addProduct() {
     let hasCollapsed = $("html").hasClass("sidebar-left-collapsed");
-    let paddingClass = ["paddingLeft-custom","mx-auto"];
+    let paddingClass = ["paddingLeft-custom", "mx-auto"];
     if (hasCollapsed) {
       paddingClass = ["mx-auto"];
     }
@@ -94,5 +101,8 @@ export class AdminProductComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   onDeleteItem(item) {
     console.log(item);
+  }
+  isString(val) {
+    return typeof val === "string";
   }
 }

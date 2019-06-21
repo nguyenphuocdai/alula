@@ -48,7 +48,8 @@
               <td>{{ item.priceDiscount }}</td>
               <td>{{ item.currency }}</td>
               <td>
-                <img src="{{ item.image }}" class="img-fluid product-image" />
+                <img *ngIf="isString(item.image)" src="{{ item.image }}" class="img-fluid product-image" />
+                <img *ngIf="isString(item.image.base64)" src="{{ item.image.base64}}" class="img-fluid product-image" />
               </td>
               <td>{{ item.shortDesc }}</td>
               <td class="actions">
