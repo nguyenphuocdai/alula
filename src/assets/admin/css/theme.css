@@ -7744,11 +7744,11 @@ html.dark .colorpicker:after {
 }
 /* Filter */
 .dataTables_wrapper .dataTables_filter label {
-	width: 50%;
+	/* width: 50%; */
 }
 
 .dataTables_wrapper .dataTables_filter input {
-	width: 100% !important;
+	/* width: 100% !important; */
 }
 
 @media only screen and (max-width: 991px) {

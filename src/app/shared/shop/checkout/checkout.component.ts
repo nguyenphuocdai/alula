@@ -14,6 +14,7 @@ import {
 import { AppConstant } from "src/app/core/_const/app.constant";
 import { Router, NavigationEnd } from "@angular/router";
 import * as $ from "jquery";
+import { UserService } from "src/app/core/_services";
 
 @Component({
   selector: "app-checkout",
@@ -36,7 +37,8 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private orderSerivce: OrderSerivce
+    private orderSerivce: OrderSerivce,
+    private userService: UserService
   ) {
     this.cartSubscription = this.cartService.currentCart.subscribe(products => {
       if (products.length === 0) {
@@ -113,6 +115,7 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
       let state = this.checkoutForm.controls["state"].value;
       let zipcode = this.checkoutForm.controls["zipcode"].value;
       let methodPayment = this.checkoutForm.controls["methodPayment"].value;
+      let userId = this.userService.getCurentUserId();
 
       let objBill = {
         id: this.generateUUID(),
@@ -129,7 +132,8 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
         zipcode: zipcode,
         methodPayment: methodPayment,
         product: this.cartProducts,
-        totalAmount: this.totalAmount
+        totalAmount: this.totalAmount,
+        userId: userId
       };
       let datalocal = this.localstorage.get(AppConstant.BILL_ORDER);
       datalocal.push(objBill);

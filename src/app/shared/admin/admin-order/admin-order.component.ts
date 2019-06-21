@@ -46,4 +46,14 @@ export class AdminOrderComponent implements OnInit, OnDestroy {
       clearInterval(this.intervalTimer);
     }
   }
+
+  identify(index, item) {
+    return item.id;
+  }
+  onEditItem(item) {
+    console.log(item);
+  }
+  onDeleteItem(item) {
+    console.log(item);
+  }
 }

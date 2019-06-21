@@ -1,6 +1,6 @@
 <!-- <section role="main" class="content-body card-margin"> -->
 <header class="page-header">
-  <h2>Basic Tables</h2>
+  <h2>Customer - Orders</h2>
 
   <div class="right-wrapper text-right">
     <ol class="breadcrumbs">
@@ -9,8 +9,8 @@
           <i class="fas fa-home"></i>
         </a>
       </li>
-      <li><span>Tables</span></li>
-      <li><span>Basic</span></li>
+      <li><span>Management</span></li>
+      <li><span>Customer - Order</span></li>
     </ol>
 
     <a class="sidebar-right-toggle" data-open="sidebar-right"
@@ -46,7 +46,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of arrOrders; let i = index">
+            <tr *ngFor="let item of arrOrders; let i = index;trackBy:identify">
+               
               <td>{{ i + 1 }}</td>
               <td>{{ item.firstname }}</td>
               <td>{{ item.lastname }}</td>
@@ -59,14 +60,15 @@
               <td>{{ item.city }}</td>
               <td>{{ item.state }}</td>
               <td>{{ item.zipcode }}</td>
-              <td>{{ item.methodPayment }}</td>
+              <td>{{ item.methodPayment }}</td>,
+              <td>{{ item.userId}}</td>
               <td>
-                  <p *ngFor="let prouduct of item.product" style="margin-bottom: 0;">{{prouduct.quatity}} - {{prouduct.name}}</p>
+                  <p *ngFor="let prouduct of item.product;trackBy:identify" style="margin-bottom: 0;">{{prouduct.quatity}} - {{prouduct.name}}</p>
               </td>
               <td>${{ item.totalAmount }}</td>
               <td class="actions">
-                <a href="#"><i class="fas fa-pencil-alt"></i></a>
-                <a href="#" class="delete-row"
+                <a href="javascript:;" (click)="onEditItem(item)"><i class="fas fa-pencil-alt"></i></a>
+                <a href="javascript:void(0)" (click)="onDeleteItem(item)" class="delete-row"
                   ><i class="far fa-trash-alt"></i
                 ></a>
               </td>

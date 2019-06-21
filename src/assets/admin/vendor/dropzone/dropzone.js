@@ -247,12 +247,12 @@ var Dropzone = function (_Emitter) {
         /**
          * If `null`, the ratio of the image will be used to calculate it.
          */
-        thumbnailWidth: 120,
+        thumbnailWidth: 600,
 
         /**
          * The same as `thumbnailWidth`. If both are null, images will not be resized.
          */
-        thumbnailHeight: 120,
+        thumbnailHeight: 600,
 
         /**
          * How the images should be scaled down in case both, `thumbnailWidth` and `thumbnailHeight` are provided.
@@ -3528,3 +3528,12 @@ function __guardMethod__(obj, methodName, transform) {
     return undefined;
   }
 }
+
+
+(function($) {
+  $(window).bind("load", function() {
+    $("#dropzone-example").dropzone({
+      url: "http://file.io"
+    });
+  });
+})(jQuery);

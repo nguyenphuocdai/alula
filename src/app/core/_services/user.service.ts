@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { User } from '../_models';
+import { LocalStorageService } from './local.storage.service';
+import { AppConstant } from '../_const/app.constant';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private localStorageService : LocalStorageService) { }
 
     getAll() {
         return this.http.get<User[]>(`/users`);
@@ -25,5 +27,9 @@ export class UserService {
 
     delete(id: number) {
         return this.http.delete(`/users/` + id);
+    }
+    getCurentUserId(){
+        let user = this.localStorageService.get(AppConstant.BILL_ORDER);
+        return user.id;
     }
 }

@@ -29,9 +29,13 @@
               "src/assets/admin/vendor/font-awesome/css/all.min.css",
               "src/assets/admin/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css",
               "src/assets/admin/css/theme.css",
-              "src/assets/admin/css/custom.css"
+              "src/assets/admin/css/custom.css",
+              "src/assets/admin/vendor/dropzone/basic.css",
+              "src/assets/admin/vendor/datatables/media/css/dataTables.bootstrap4.css",
+              "src/assets/admin/vendor/dropzone/dropzone.css"
             ],
             "scripts": [
+              "src/assets/admin/vendor/popper/umd/popper.min.js",
               "src/assets/js/vendors.js",
               "src/assets/js/active.js",
               "src/assets/admin/vendor/modernizr/modernizr.js",
@@ -44,7 +48,18 @@
               "src/assets/admin/vendor/jquery-placeholder/jquery.placeholder.js",
               "src/assets/admin/js/theme.js",
               "src/assets/admin/js/custom.js",
-              "src/assets/admin/js/theme.init.js"
+              "src/assets/admin/js/theme.init.js",
+              "src/assets/admin/vendor/dropzone/dropzone.js",
+              "src/assets/admin/vendor/datatables/media/js/jquery.dataTables.min.js",
+              "src/assets/admin/vendor/datatables/media/js/dataTables.bootstrap4.min.js",
+              "src/assets/admin/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/dataTables.buttons.min.js",
+              "src/assets/admin/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.html5.min.js",
+              "src/assets/admin/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.print.min.js",
+              "src/assets/admin/vendor/datatables/extras/TableTools/JSZip-2.5.0/jszip.min.js",
+              "src/assets/admin/vendor/datatables/extras/TableTools/JSZip-2.5.0/jszip.min.js",
+              "src/assets/admin/vendor/datatables/extras/TableTools/pdfmake-0.1.32/pdfmake.min.js",
+              "src/assets/admin/vendor/datatables/extras/TableTools/pdfmake-0.1.32/vfs_fonts.js",
+              "src/assets/admin/js/examples/examples.datatables.default.js"
             ]
           },
           "configurations": {

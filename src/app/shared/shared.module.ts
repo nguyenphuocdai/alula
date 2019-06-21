@@ -30,6 +30,9 @@ import { AdminHeaderComponent } from "./admin/admin-header/admin-header.componen
 import { AdminAsideComponent } from "./admin/admin-aside/admin-aside.component";
 import { AdminOrderComponent } from "./admin/admin-order/admin-order.component";
 import { ProductDetailComponent } from "./shop/product-detail/product-detail.component";
+import { HomeAccountComponent } from "./home/home-account/home-account.component";
+import { AdminProductComponent } from './admin/admin-product/admin-product.component';
+import { AdminProductCreateComponent } from './admin/admin-product-create/admin-product-create.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,10 @@ import { ProductDetailComponent } from "./shop/product-detail/product-detail.com
     AdminHeaderComponent,
     AdminAsideComponent,
     AdminOrderComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    HomeAccountComponent,
+    AdminProductComponent,
+    AdminProductCreateComponent
   ],
   exports: [
     // home
@@ -87,13 +93,16 @@ import { ProductDetailComponent } from "./shop/product-detail/product-detail.com
     CheckoutComponent,
     CheckoutResultComponent,
     ConfirmComponent,
+    HomeAccountComponent,
     // admin
     AdminHeaderComponent,
     AdminAsideComponent,
     AdminOrderComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    AdminProductComponent,
+    AdminProductCreateComponent
   ],
-  entryComponents: [ProductModalComponent, SnackComponent, ConfirmComponent],
+  entryComponents: [ProductModalComponent, SnackComponent, ConfirmComponent,AdminProductCreateComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,

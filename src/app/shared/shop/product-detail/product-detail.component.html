@@ -207,19 +207,19 @@
 
                   <div class="product-info-block mb-30">
                       <div class="single-info">
-                          <span class="title">Product No.:</span>
+                          <span class="title">Product No.: </span>
                           <span class="value">{{item.id}}</span>
                       </div>
                       <div class="single-info">
-                          <span class="title">Brand:</span>
+                          <span class="title">Brand: </span>
                           <span class="value"><a href="#">Brac</a></span>
                       </div>
                       <div class="single-info">
-                          <span class="title">Product Code:</span>
+                          <span class="title">Product Code: </span>
                           <span class="value">abcd1234</span>
                       </div>
                       <div class="single-info">
-                          <span class="title">Availability:</span>
+                          <span class="title">Availability: </span>
                           <span class="value stock-red">In stock</span>
                       </div>
                   </div>
@@ -554,7 +554,7 @@
 
                                   <div class="hover-icons">
                                       <ul>
-                                          <li><a data-toggle = "modal" data-target="#quick-view-modal-container" href="javascript:void(0)"><i class="icon-eye"></i></a></li>
+                                          <li><a data-toggle="modal" href="javascript:void(0)"><i class="icon-eye"></i></a></li>
                                           <li><a href="javascript:void(0)"><i class="icon-heart"></i></a></li>
                                           <li><a href="javascript:void(0)"><i class="icon-sliders"></i></a></li>
                                       </ul>
@@ -572,7 +572,7 @@
                                   </div>
                                   <p class="product-price"><span class="discounted-price">${{item.priceDiscount}}</span> <span class="main-price discounted">${{item.price}}</span></p>
 
-                                  <span class="cart-icon"><a href="javascript:void(0)"><i class="icon-shopping-cart"></i></a></span>
+                                  <span class="cart-icon"><a href="javascript:void(0)" (click)="openDialog(item)"><i class="icon-shopping-cart"></i></a></span>
                               </div>
                           </div>
 

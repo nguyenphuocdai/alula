@@ -7,10 +7,16 @@ export class product {
     public image: String,
     public url: String,
     public shortDesc: String,
+    public imageThumnail?: image[],
     public priceDiscount?: number,
     public added?: boolean,
     public quatity?: number
   ) {}
+}
+
+export class image{
+  base64: string;
+  name: string;
 }
 
 export const productsCollection: product[] = [

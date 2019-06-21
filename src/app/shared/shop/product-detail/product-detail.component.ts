@@ -5,6 +5,10 @@ import { ActivatedRoute } from "@angular/router";
 import { LocalStorageService } from "src/app/core/_services/local.storage.service";
 import * as $ from "jquery";
 import "slick-carousel";
+import { SnackComponent } from '../../component/snack/snack.component';
+import { ConfirmComponent } from '../confirm/confirm.component';
+import { CartService } from 'src/app/core/_services/cart.service';
+import { MatSnackBar, MatDialog, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material';
 
 @Component({
   selector: "app-product-detail",
@@ -16,10 +20,17 @@ export class ProductDetailComponent implements OnInit {
   sub: any;
   item: any;
   Products: product[] [];
+  durationInSeconds = 5;
+  horizontalPosition: MatSnackBarHorizontalPosition = "right";
+  verticalPosition: MatSnackBarVerticalPosition = "top";
+  
   constructor(
     private route: ActivatedRoute,
     private localStorageService: LocalStorageService,
-    private productService: ProductSerivce
+    private productService: ProductSerivce,
+    private _cartService: CartService,
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {
     this.sub = this.route.params.subscribe(params => {
       this.id = params["id"];
@@ -37,6 +48,33 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  AddProduct(_product: product) {
+    _product.added = true;
+    _product.quatity = 1;
+    this._cartService.addProduct(_product);
+    this.openSnackBar();
+  }
+  openDialog(_product: product) {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: "400px",
+      data: { name: "name" }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.AddProduct(_product);
+      }
+    });
+  }
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackComponent, {
+      duration: 5000,
+      data: "Add item to cart successfully !",
+      verticalPosition: this.verticalPosition,
+      horizontalPosition: this.horizontalPosition
+    });
+  }
 
   ngAfterViewInit(): void {
     /*=============================================
