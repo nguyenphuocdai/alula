@@ -1,232 +1,361 @@
 <!--====================  Header area ====================-->
 
 <div class="header-area header-sticky">
-    <!--====================  Navigation top ====================-->
+  <!--====================  Navigation top ====================-->
 
-    <div class="navigation-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--====================  navigation section ====================-->
+  <div class="navigation-top">
+    <div
+      class=""
+      [ngClass]="{
+        'container-fluid': isContainerFluid,
+        container: !isContainerFluid
+      }"
+    >
+      <div class="row">
+        <div class="col-lg-12">
+          <!--====================  navigation section ====================-->
 
-                    <div class="navigation-top-topbar pt-10 pb-10">
-                        <div class="row align-items-center">
-                            <div class="col-lg-4 col-md-6 text-center text-md-left">
-                                <!--=======  header top social links  =======-->
+          <div class="navigation-top-topbar pt-10 pb-10">
+            <div class="row align-items-center">
+              <div class="col-lg-6 col-md-6 text-center text-md-left">
+                <!--=======  header top social links  =======-->
 
-                                <div class="header-top-social-links">
-                                    <!-- <span class="follow-text mr-15">Follow Us:</span> -->
-                                    <!--=======  social link small  =======-->
+                <div class="header-top-social-links">
+                  <!-- <span class="follow-text mr-15">Follow Us:</span> -->
+                  <!--=======  social link small  =======-->
 
-                                    <ul class="social-link-small">
-                                        <li><a href="http://www.facebook.com/"><i class="ion-social-facebook"></i></a>
-                                        </li>
-                                        <li><a href="http://www.twitter.com/"><i class="ion-social-twitter"></i></a>
-                                        </li>
-                                        <li><a href="http://plus.google.com/"><i
-                                                    class="ion-social-googleplus-outline"></i></a></li>
-                                        <li><a href="http://www.instagram.com/"><i
-                                                    class="ion-social-instagram-outline"></i></a></li>
-                                        <li><a href="http://www.youtube.com/"><i class="ion-social-youtube"></i></a>
-                                        </li>
-                                    </ul>
+                  <ul class="social-link-small">
+                    <li>
+                      <a href="http://www.facebook.com/"
+                        ><i class="ion-social-facebook"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="http://www.twitter.com/"
+                        ><i class="ion-social-twitter"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="http://plus.google.com/"
+                        ><i class="ion-social-googleplus-outline"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="http://www.instagram.com/"
+                        ><i class="ion-social-instagram-outline"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="http://www.youtube.com/"
+                        ><i class="ion-social-youtube"></i
+                      ></a>
+                    </li>
+                  </ul>
 
-                                    <!--=======  End of social link small  =======-->
-                                </div>
+                  <!--=======  End of social link small  =======-->
+                </div>
 
+                <!--=======  End of header top social links  =======-->
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <!--=======  header top dropdown container  =======-->
 
-                                <!--=======  End of header top social links  =======-->
-                            </div>
-                            <div class="col-lg-4 offset-lg-4 col-md-6">
-                                <!--=======  header top dropdown container  =======-->
+                <div
+                  class="headertop-dropdown-container justify-content-center justify-content-md-end"
+                >
+                  <div class="header-top-single-dropdown" *ngIf="!currentUser">
+                    <a
+                      href="javascript:void(0)"
+                      class="active-dropdown-trigger"
+                      id="user-options"
+                      >Tài khoản<i class="ion-ios-arrow-down"></i
+                    ></a>
+                    <!--=======  dropdown menu items  =======-->
 
-                                <div class="headertop-dropdown-container justify-content-center justify-content-md-end">
-                                    <div class="header-top-single-dropdown" *ngIf="!currentUser">
-                                        <a href="javascript:void(0)" class="active-dropdown-trigger"
-                                            id="user-options">Đăng nhập - Đăng ký <i class="ion-ios-arrow-down"></i></a>
-                                        <!--=======  dropdown menu items  =======-->
-
-                                        <div
-                                            class="header-top-single-dropdown__dropdown-menu-items deactive-dropdown-menu extra-small-mobile-fix">
-                                            <ul>
-                                                <li><a href="javascript:void(0)" routerLink="/home/register">Đăng ký</a>
-                                                </li>
-                                                <li><a href="javascript:void(0)" routerLink="/home/login">Đăng nhập</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <!--=======  End of dropdown menu items  =======-->
-                                    </div>
-                                    <div class="header-top-single-dropdown" *ngIf="currentUser">
-                                        <a href="javascript:void(0)" class="active-dropdown-trigger"
-                                            id="user-options-02">{{currentUser.firstName + currentUser.lastName}}<i
-                                                class="ion-ios-arrow-down"></i></a>
-                                        <!--=======  dropdown menu items  =======-->
-
-                                        <div
-                                            class="header-top-single-dropdown__dropdown-menu-items deactive-dropdown-menu extra-small-mobile-fix">
-                                            <ul>
-                                                <li><a href="javascript:void(0)" [routerLink]="['/home/account']">Tài
-                                                        khoản của tôi</a></li>
-                                                <li><a href="javascript:void(0)" (click)="logout()">Đăng xuất</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <span class="separator">|</span>
-                                    <div class="header-top-single-dropdown">
-                                        <a href="javascript:void(0)" class="active-dropdown-trigger"
-                                            id="language-options"> <img src="../../../../assets/img/icons/vi-VN.png"
-                                                alt=""> vi-VN <i class="ion-ios-arrow-down"></i></a>
-                                        <!--=======  dropdown menu items  =======-->
-
-                                        <div
-                                            class="header-top-single-dropdown__dropdown-menu-items deactive-dropdown-menu">
-                                            <ul>
-                                                <li><a href="#"> <img src="../../../../assets/img/icons/en-gb.png"
-                                                            alt=""> English </a></li>
-                                                <li><a href="#"> <img src="../../../../assets/img/icons/de-de.png"
-                                                            alt=""> Germany </a></li>
-                                                <li><a href="#"> <img src="../../../../assets/img/icons/vi-VN.png"
-                                                            alt=""> Tiếng Việt </a></li>
-                                            </ul>
-                                        </div>
-
-                                        <!--=======  End of dropdown menu items  =======-->
-                                    </div>
-                                    <span class="separator">|</span>
-                                    <div class="header-top-single-dropdown">
-                                        <a href="javascript:void(0)" class="active-dropdown-trigger"
-                                            id="currency-options">VNĐ <i class="ion-ios-arrow-down"></i></a>
-                                        <!--=======  dropdown menu items  =======-->
-
-                                        <div
-                                            class="header-top-single-dropdown__dropdown-menu-items deactive-dropdown-menu">
-                                            <ul>
-                                                <li><a href="#">€ EURO</a></li>
-                                                <li><a href="#">£ Pound Sterling</a></li>
-                                                <li><a href="#">$ US Dollar</a></li>
-                                                <li><a href="#">VNĐ</a></li>
-                                            </ul>
-                                        </div>
-
-                                        <!--=======  End of dropdown menu items  =======-->
-                                    </div>
-                                </div>
-
-                                <!--=======  End of header top dropdown container  =======-->
-                            </div>
-                        </div>
+                    <div
+                      class="header-top-single-dropdown__dropdown-menu-items deactive-dropdown-menu extra-small-mobile-fix"
+                    >
+                      <ul>
+                        <li>
+                          <a
+                            href="javascript:void(0)"
+                            routerLink="/home/register"
+                            >Đăng ký</a
+                          >
+                        </li>
+                        <li>
+                          <a href="javascript:void(0)" routerLink="/home/login"
+                            >Đăng nhập</a
+                          >
+                        </li>
+                      </ul>
                     </div>
 
-                    <!--====================  End of navigation section  ====================-->
+                    <!--=======  End of dropdown menu items  =======-->
+                  </div>
+                  <div class="header-top-single-dropdown" *ngIf="currentUser">
+                    <a
+                      href="javascript:void(0)"
+                      class="active-dropdown-trigger"
+                      id="user-options-02"
+                      >{{ currentUser.firstName + currentUser.lastName
+                      }}<i class="ion-ios-arrow-down"></i
+                    ></a>
+                    <!--=======  dropdown menu items  =======-->
+
+                    <div
+                      class="header-top-single-dropdown__dropdown-menu-items deactive-dropdown-menu extra-small-mobile-fix"
+                    >
+                      <ul>
+                        <li>
+                          <a
+                            href="javascript:void(0)"
+                            [routerLink]="['/home/account']"
+                            >Tài khoản của tôi</a
+                          >
+                        </li>
+                        <li>
+                          <a href="javascript:void(0)" (click)="logout()"
+                            >Đăng xuất</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <span class="separator">|</span>
+                  <div class="header-top-single-dropdown">
+                    <a
+                      href="javascript:void(0)"
+                      class="active-dropdown-trigger"
+                      id="language-options"
+                    >
+                      <img src="../../../../assets/img/icons/vi-VN.png" alt=""/>
+                      vi-VN <i class="ion-ios-arrow-down"></i
+                    ></a>
+                    <!--=======  dropdown menu items  =======-->
+
+                    <div
+                      class="header-top-single-dropdown__dropdown-menu-items deactive-dropdown-menu"
+                    >
+                      <ul>
+                        <li>
+                          <a href="#">
+                            <img
+                              src="../../../../assets/img/icons/en-gb.png"
+                              alt=""
+                            />
+                            English
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <img
+                              src="../../../../assets/img/icons/de-de.png"
+                              alt=""
+                            />
+                            Germany
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <img
+                              src="../../../../assets/img/icons/vi-VN.png"
+                              alt=""
+                            />
+                            Tiếng Việt
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <!--=======  End of dropdown menu items  =======-->
+                  </div>
+                  <span class="separator">|</span>
+                  <div class="header-top-single-dropdown">
+                    <a
+                      href="javascript:void(0)"
+                      class="active-dropdown-trigger"
+                      id="currency-options"
+                      >VNĐ <i class="ion-ios-arrow-down"></i
+                    ></a>
+                    <!--=======  dropdown menu items  =======-->
+
+                    <div
+                      class="header-top-single-dropdown__dropdown-menu-items deactive-dropdown-menu"
+                    >
+                      <ul>
+                        <li><a href="#">€ EURO</a></li>
+                        <li><a href="#">£ Pound Sterling</a></li>
+                        <li><a href="#">$ US Dollar</a></li>
+                        <li><a href="#">VNĐ</a></li>
+                      </ul>
+                    </div>
+
+                    <!--=======  End of dropdown menu items  =======-->
+                  </div>
                 </div>
+
+                <!--=======  End of header top dropdown container  =======-->
+              </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--====================  navigation top search ====================-->
+          </div>
 
+          <!--====================  End of navigation section  ====================-->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <!--====================  navigation top search ====================-->
 
-                    <div class="navigation-top-search-area pt-25 pb-25">
-                        <div class="row align-items-center">
-                            <div class="col-6 col-xl-2 col-lg-3 order-1 col-md-6 col-sm-5">
-                                <!--=======  logo  =======-->
+          <div class="navigation-top-search-area pt-25 pb-25">
+            <div class="row align-items-center">
+              <div class="col-8 col-xl-2 col-lg-2 order-1 col-md-4 col-sm-4">
+                <!--=======  logo  =======-->
 
-                                <div class="logo">
-                                    <a href="javascript:void(0)" routerLink="/">
-                                        <img src="../../../../assets/img/logo.png" class="img-fluid" alt="">
-                                    </a>
-                                </div>
+                <div class="logo">
+                  <a href="javascript:void(0)" routerLink="/">
+                    <img
+                      src="../../../../assets/img/logo.png"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </a>
+                </div>
 
-                                <!--=======  End of logo  =======-->
-                            </div>
+                <!--=======  End of logo  =======-->
+              </div>
 
-                            <div class="col-xl-4 offset-xl-1 col-lg-4 order-4 order-lg-2 mt-md-25 mt-sm-25">
-                                <!--=======  search bar  =======-->
+              <div
+                class="col-xl-4 offset-xl-1 col-lg-4 order-4 order-lg-2 mt-md-25 mt-sm-25"
+              >
+                <!--=======  search bar  =======-->
 
-                                <div class="search-bar">
-                                    <form action="#">
-                                        <input type="search" placeholder="Search entire store here ...">
-                                        <button type="submit"> <i class="icon-search"></i></button>
-                                    </form>
-                                </div>
+                <div class="search-bar">
+                  <form action="#">
+                    <input
+                      type="search"
+                      placeholder="Search entire store here ..."
+                    />
+                    <button type="submit"><i class="icon-search"></i></button>
+                  </form>
+                </div>
 
-                                <!--=======  End of search bar  =======-->
-                            </div>
+                <!--=======  End of search bar  =======-->
+              </div>
 
-                            <div
-                                class="col-xl-3 col-lg-3 order-3 order-sm-2 order-lg-3 order-xs-3 col-md-4 col-sm-5 text-center text-sm-left mt-xs-25">
-                                <!--=======  customer support text  =======-->
+              <div
+                class="col-xl-3 col-lg-3 order-3 order-sm-2 order-lg-3 order-xs-3 col-md-4 col-sm-4 text-center text-sm-left mt-xs-25"
+                style="padding: 0"
+              >
+                <!--=======  customer support text  =======-->
 
-                                <div class="customer-support-text">
-                                    <div class="icon">
-                                        <img src="../../../../assets/img/icons/icon-header-phone.png" class="img-fluid"
-                                            alt="">
-                                    </div>
+                <div class="customer-support-text">
+                  <div class="icon">
+                    <img
+                      src="../../../../assets/img/icons/icon-header-phone.png"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </div>
 
-                                    <div class="text">
-                                        <span>Hỗ trợ khách hàng</span>
-                                        <p>(08) 12 345 789</p>
-                                    </div>
-                                </div>
+                  <div class="text">
+                    <span>Hỗ trợ khách hàng</span>
+                    <p>(08) 12 345 789</p>
+                  </div>
+                </div>
 
-                                <!--=======  End of customer support text  =======-->
-                            </div>
+                <!--=======  End of customer support text  =======-->
+              </div>
 
+              <div
+                class="col-2 col-xl-1 col-lg-2 text-right order-2 order-sm-3 order-lg-4 order-xs-2 col-md-2 col-sm-2"
+              >
+                <!--=======  cart icon  =======-->
 
-                            <div
-                                class="col-6 col-xl-1 col-lg-2 text-right order-2 order-sm-3 order-lg-4 order-xs-2 col-md-2 col-sm-2">
-                                <!--=======  cart icon  =======-->
+                <div class="header-cart-icon">
+                  <a
+                    href="javascript:void(0)"
+                    [routerLink]="['/shop/product-compare']"
+                    matTooltip="So sánh sản phẩm"
+                    class="small-cart-trigger"
+                  >
+                    <i class="icon-sliders"></i>
+                    <span class="cart-counter">{{
+                      compareProducts.length
+                    }}</span>
+                  </a>
+                </div>
+              </div>
 
-                                <div class="header-cart-icon">
-                                    <a href="javascript:void(0)" [routerLink]="['/shop/product-compare']" matTooltip="So sánh sản phẩm"
-                                        class="small-cart-trigger">
-                                        <i class="icon-sliders"></i>
-                                        <span class="cart-counter">{{compareProducts.length}}</span>
-                                    </a>
-                                </div>
-                            </div>
+              <div
+                class="col-2 col-xl-1 col-lg-1 text-right order-2 order-sm-3 order-lg-4 order-xs-2 col-md-2 col-sm-2"
+              >
+                <!--=======  cart icon  =======-->
 
-                            <div
-                                class="col-6 col-xl-1 col-lg-2 text-right order-2 order-sm-3 order-lg-4 order-xs-2 col-md-2 col-sm-2">
-                                <!--=======  cart icon  =======-->
+                <div class="header-cart-icon">
+                  <a
+                    href="javascript:void(0)"
+                    matTooltip="Giỏ hàng của bạn"
+                    id="small-cart-trigger"
+                    class="small-cart-trigger"
+                  >
+                    <i class="icon-shopping-cart"></i>
+                    <span class="cart-counter">{{ cartProducts.length }}</span>
+                  </a>
 
-                                <div class="header-cart-icon">
-                                    <a href="javascript:void(0)" matTooltip="Giỏ hàng của bạn" id="small-cart-trigger" class="small-cart-trigger">
-                                        <i class="icon-shopping-cart"></i>
-                                        <span class="cart-counter">{{cartProducts.length}}</span>
-                                    </a>
+                  <!--=======  small cart  =======-->
 
-                                    <!--=======  small cart  =======-->
+                  <div class="small-cart deactive-dropdown-menu">
+                    <div class="small-cart-item-wrapper">
+                      <div
+                        class="single-item"
+                        *ngFor="let item of cartProducts"
+                      >
+                        <div class="image">
+                          <a
+                            href="javascript:void(0)"
+                            [routerLink]="['/shop/product-detail', item.id]"
+                          >
+                            <img
+                              src="{{ item.image }}"
+                              class="img-fluid"
+                              alt=""
+                            />
+                          </a>
+                        </div>
+                        <div class="content">
+                          <p class="cart-name">
+                            <a
+                              href="javascript:void(0)"
+                              [routerLink]="['/shop/product-detail', item.id]"
+                              >{{ item.name }}</a
+                            >
+                          </p>
+                          <p class="cart-quantity">
+                            <span class="quantity-mes"
+                              >{{ item.quatity }} x
+                            </span>
+                            {{
+                              item.priceDiscount
+                                ? item.priceDiscount
+                                : item.price
+                            }}
+                          </p>
+                        </div>
+                        <a href="javascript:void(0)" class="remove-icon"
+                          ><i
+                            class="ion-close-round"
+                            (click)="openDialog(item)"
+                          ></i
+                        ></a>
+                      </div>
+                    </div>
 
-                                    <div class="small-cart deactive-dropdown-menu">
-                                        <div class="small-cart-item-wrapper">
-                                            <div class="single-item" *ngFor="let item of cartProducts">
-                                                <div class="image">
-                                                    <a href="javascript:void(0)"
-                                                        [routerLink]="['/shop/product-detail', item.id]">
-                                                        <img src="{{item.image}}" class="img-fluid" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="content">
-                                                    <p class="cart-name"><a href="javascript:void(0)"
-                                                            [routerLink]="['/shop/product-detail', item.id]">{{item.name}}</a>
-                                                    </p>
-                                                    <p class="cart-quantity"><span class="quantity-mes">{{item.quatity}}
-                                                            x </span>
-                                                        {{item.priceDiscount ? item.priceDiscount : item.price}}</p>
-                                                </div>
-                                                <a href="javascript:void(0)" class="remove-icon"><i
-                                                        class="ion-close-round" (click)="openDialog(item)"></i></a>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="cart-calculation-table">
-                                            <table class="table mb-25">
-                                                <tbody>
-                                                    <!--<tr>
+                    <div class="cart-calculation-table">
+                      <table class="table mb-25">
+                        <tbody>
+                          <!--<tr>
                                                       <td class="text-left">Sub-Total :</td>
                                                       <td class="text-right">$129.00</td>
                                                   </tr>
@@ -238,65 +367,76 @@
                                                       <td class="text-left">VAT (20%) :</td>
                                                       <td class="text-right">$25.80</td>
                                                   </tr>-->
-                                                    <tr>
-                                                        <td class="text-left">Tổng tiền :</td>
-                                                        <td class="text-right">${{totalAmount}}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                          <tr>
+                            <td class="text-left">Tổng tiền :</td>
+                            <td class="text-right">${{ totalAmount }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
 
-                                            <div class="cart-buttons">
-                                                <a href="javascript:void(0)" *ngIf="cartProducts.length > 0"
-                                                    routerLink="/shop/cart" class="theme-button">Xem giỏ hàng</a>
-                                                <a href="javascript:void(0)" *ngIf="cartProducts.length === 0"
-                                                    routerLink="/shop" class="theme-button">Mua sắm</a>
-                                                <a href="javascript:void(0)" *ngIf="cartProducts.length > 0"
-                                                    routerLink="/shop/checkout" class="theme-button">Thanh toán</a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <!--=======  End of small cart  =======-->
-                                </div>
-
-                                <!--=======  End of cart icon  =======-->
-                            </div>
-
-
-
-
-                        </div>
+                      <div class="cart-buttons">
+                        <a
+                          href="javascript:void(0)"
+                          *ngIf="cartProducts.length > 0"
+                          routerLink="/shop/cart"
+                          class="theme-button"
+                          >Xem giỏ hàng</a
+                        >
+                        <a
+                          href="javascript:void(0)"
+                          *ngIf="cartProducts.length === 0"
+                          routerLink="/shop"
+                          class="theme-button"
+                          >Mua sắm</a
+                        >
+                        <a
+                          href="javascript:void(0)"
+                          *ngIf="cartProducts.length > 0"
+                          routerLink="/shop/checkout"
+                          class="theme-button"
+                          >Thanh toán</a
+                        >
+                      </div>
                     </div>
+                  </div>
 
-                    <!--====================  End of navigation top search  ====================-->
+                  <!--=======  End of small cart  =======-->
                 </div>
+
+                <!--=======  End of cart icon  =======-->
+              </div>
             </div>
+          </div>
+
+          <!--====================  End of navigation top search  ====================-->
         </div>
+      </div>
     </div>
+  </div>
 
-    <!--====================  End of Navigation top  ====================-->
+  <!--====================  End of Navigation top  ====================-->
 
-    <!--====================  navigation menu ====================-->
+  <!--====================  navigation menu ====================-->
 
-    <div class="navigation-menu-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- navigation section -->
-                    <div class="main-menu d-none d-lg-block">
-                        <nav>
-                            <ul>
-                                <li class="active"><a href="javascript:void(0)" routerLink="/">TRANG CHỦ</a>
-                                    <!--<ul class="sub-menu">
+  <div class="navigation-menu-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- navigation section -->
+          <div class="main-menu d-none d-lg-block">
+            <nav>
+              <ul>
+                <li class="active">
+                  <a href="javascript:void(0)" routerLink="/">TRANG CHỦ</a>
+                  <!--<ul class="sub-menu">
                                       <li><a href="index.html">Home Shop 1</a></li>
                                       <li><a href="index-2.html">Home Shop 2</a></li>
                                       <li><a href="index-3.html">Home Shop 3</a></li>
                                       <li><a href="index-4.html">Home Shop 4</a></li>
                                   </ul>-->
-                                </li>
+                </li>
 
-                                <!--<li class="menu-item-has-children"><a href="#">PAGES</a>
+                <!--<li class="menu-item-has-children"><a href="#">PAGES</a>
                                   <ul class="sub-menu">
                                       <li class="menu-item-has-children"><a href="#">Page List One</a>
                                           <ul class="sub-menu">
@@ -322,15 +462,23 @@
                                   </ul>
                               </li>-->
 
-                                <li class="menu-item-has-children"><a href="javascript:void(0)">LOẠI SẢN PHẨM</a>
-                                    <ul class="mega-menu four-column">
-                                        <li><a href="#">CÂY CẢNH</a>
-                                            <ul>
-                                                <li><a href="javascript:void(0)" routerLink="/shop"
-                                                        style="cursor: pointer">Shop cây cảnh</a></li>
-                                            </ul>
-                                        </li>
-                                        <!--<li><a href="shop-list-left-sidebar.html">Shop List</a>
+                <li class="menu-item-has-children">
+                  <a href="javascript:void(0)">LOẠI SẢN PHẨM</a>
+                  <ul class="mega-menu four-column">
+                    <li>
+                      <a href="#">CÂY CẢNH</a>
+                      <ul>
+                        <li>
+                          <a
+                            href="javascript:void(0)"
+                            routerLink="/shop"
+                            style="cursor: pointer"
+                            >Shop cây cảnh</a
+                          >
+                        </li>
+                      </ul>
+                    </li>
+                    <!--<li><a href="shop-list-left-sidebar.html">Shop List</a>
                                           <ul>
                                               <li><a href="shop-list.html">shop List</a></li>
                                               <li><a href="shop-list-left-sidebar.html">shop List Left Sidebar</a></li>
@@ -357,16 +505,16 @@
                                               <li><a href="single-product-slider-box.html">Slider Box</a></li>
                                           </ul>
                                       </li>-->
-                                        <!-- <li class="megamenu-banner d-none d-lg-block mt-30 w-100">
+                    <!-- <li class="megamenu-banner d-none d-lg-block mt-30 w-100">
                                             <a href="shop-left-sidebar.html" class="mb-0">
                                                 <img src="../../../../assets/img/banners/img-bottom-menu.jpg"
                                                     class="img-fluid" alt="">
                                             </a>
                                         </li> -->
-                                    </ul>
-                                </li>
+                  </ul>
+                </li>
 
-                                <!--<li class="menu-item-has-children"><a href="blog-left-sidebar.html">BLOG</a>
+                <!--<li class="menu-item-has-children"><a href="blog-left-sidebar.html">BLOG</a>
                                   <ul class="sub-menu">
                                       <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
                                       <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
@@ -379,23 +527,25 @@
                                   </ul>
                               </li>-->
 
-                                <!--<li><a href="contact.html">CONTACT</a></li>-->
-                            </ul>
-                        </nav>
+                <!--<li><a href="contact.html">CONTACT</a></li>-->
+              </ul>
+            </nav>
+          </div>
+          <!-- end of navigation section -->
 
-                    </div>
-                    <!-- end of navigation section -->
-
-                    <!-- Mobile Menu -->
-                    <div class="mobile-menu-wrapper d-block d-lg-none pt-15">
+          <!-- Mobile Menu -->
+          <!-- <div class="mobile-menu-wrapper d-block d-lg-none pt-15">
                         <div class="mobile-menu"></div>
-                    </div>
-                </div>
-            </div>
+                    </div> -->
+          <div class="mobile-menu-wrapper d-block d-lg-none pt-15">
+            <div class="mobile-menu mean-container"></div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!--====================  End of navigation menu  ====================-->
+  <!--====================  End of navigation menu  ====================-->
 </div>
 
 <!--====================  End of Header area  ====================-->

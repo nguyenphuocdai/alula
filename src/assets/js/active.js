@@ -134,16 +134,18 @@
     /*=============================================
     =            Mean menu active            =
     =============================================*/
-
-	var mainMenuNav = $('.main-menu nav');
-	mainMenuNav.meanmenu({
-		meanScreenWidth: '991',
-		meanMenuContainer: '.mobile-menu',
-		meanMenuClose: '<span class="mean-menu-text"><i class="lnr lnr-text-align-left"></i> Mobile Menu</span> <span class="menu-close"></span>',
-		meanMenuOpen: '<span class="mean-menu-text"><i class="lnr lnr-text-align-left"></i> Mobile Menu</span> <span class="menu-bar"></span>',
-		meanRevealPosition: 'right',
-		meanMenuCloseSize: '0',
-	});
+    $(window).bind("load", function() {
+        var mainMenuNav = $('.main-menu nav');
+        mainMenuNav.meanmenu({
+            meanScreenWidth: '991',
+            meanMenuContainer: '.mobile-menu',
+            meanMenuClose: '<span class="mean-menu-text"><i class="lnr lnr-text-align-left"></i> Mobile Menu</span> <span class="menu-close"></span>',
+            meanMenuOpen: '<span class="mean-menu-text"><i class="lnr lnr-text-align-left"></i> Mobile Menu</span> <span class="menu-bar"></span>',
+            meanRevealPosition: 'right',
+            meanMenuCloseSize: '0',
+        });
+    });
+	
     
     /*=====  End of Mean menu active  ======*/
 

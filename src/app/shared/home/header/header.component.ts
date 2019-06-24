@@ -1,4 +1,10 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  OnDestroy,
+  HostListener
+} from "@angular/core";
 import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
 import { CartService } from "src/app/core/_services/cart.service";
@@ -26,6 +32,13 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   cartProducts: product[] = [];
   compareProducts: product[] = [];
   totalAmount: number = 0;
+  isContainerFluid: boolean = false;
+
+  @HostListener("window:resize", ["$event"])
+  onResize(event?) {
+    let width = window.innerWidth;
+    this.isContainerFluid = width <= 992 ? true : false;
+  }
 
   constructor(
     private authenticationService: AuthenticationService,
