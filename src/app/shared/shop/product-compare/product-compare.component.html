@@ -66,7 +66,7 @@
                                             </div>
                                         </span>
                                     </td>
-                                    <ng-container *ngFor="let val of item.value">
+                                    <ng-container *ngFor="let val of item.value; let i = index">
                                         <!-- Image -->
                                         <ng-container *ngIf="item.columnCompare === 'image'">
                                             <td>
@@ -85,12 +85,19 @@
                                         </ng-container>
 
                                         <ng-container *ngIf="item.columnCompare === 'Delete'">
-                                            <td class="pro-remove"><button><i class="fa fa-trash-o"></i></button></td>
+                                            <td class="pro-remove">
+                                                <button (click)="onDeleteItem(i)">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </button>
+                                            </td>
                                         </ng-container>
 
                                         <ng-container *ngIf="item.columnCompare === 'Add to cart'">
-                                            <td class="pro-addtocart"><a href="#" class="add-to-cart" tabindex="0"><i
-                                                        class="fa fa-shopping-cart"></i><span>Thêm</span></a></td>
+                                            <td class="pro-addtocart">
+                                                <a href="javascript:void(0)" (click)="onAddCart(i)" class="add-to-cart" tabindex="0"><i
+                                                        class="fa fa-shopping-cart"></i><span>Thêm</span>
+                                                </a>
+                                            </td>
                                         </ng-container>
                                     </ng-container>
                                 </tr>

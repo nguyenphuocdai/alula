@@ -29,15 +29,19 @@ export class ProductSerivce {
 
   getAllProducts(): Observable<any> {
     let localProduct = this.localStorageService.get(AppConstant.ALL_PRODUCTS);
-    let mergeArray = localProduct
-      .concat(productsCollection)
-      .concat(productsNew);
-    this.Products = mergeArray.filter(function(item, pos) {
-      return mergeArray.indexOf(item) == pos;
-    });
+    if (localProduct.length === 0) {
+      let mergeArray = localProduct
+        .concat(productsCollection)
+        .concat(productsNew);
+      this.Products = mergeArray.filter(function(item, pos) {
+        return mergeArray.indexOf(item) == pos;
+      });
 
-    this.localStorageService.set(AppConstant.ALL_PRODUCTS, this.Products);
-    return of(this.Products);
+      this.localStorageService.set(AppConstant.ALL_PRODUCTS, this.Products);
+
+      return of(this.Products);
+    }
+    return of(localProduct);
   }
 
   generateUniqueID() {
@@ -105,5 +109,22 @@ export class ProductSerivce {
     }
 
     return false;
+  }
+
+  removeCompareProduct(index: number): boolean {
+    let localProducts = this.localStorageService.get(
+      AppConstant.COMPARE_PRODUCT_LIST
+    );
+    if (localProducts.length === 0 || index < 0) {
+      return false;
+    }
+
+    localProducts.splice(index, 1);
+    this.localStorageService.set(
+      AppConstant.COMPARE_PRODUCT_LIST,
+      localProducts
+    );
+    this.currentCompareSubject.next(localProducts);
+    return true;
   }
 }

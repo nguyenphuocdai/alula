@@ -3,14 +3,14 @@ import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
 import { CartService } from "src/app/core/_services/cart.service";
 import { product } from "src/app/core/_mockup/product";
-import { MatDialog } from '@angular/material';
-import { ConfirmComponent } from '../../shop/confirm/confirm.component';
-import { User } from 'src/app/core/_models';
-import { AuthenticationService } from 'src/app/core/_services';
-import { LocalStorageService } from 'src/app/core/_services/local.storage.service';
-import { AppConstant } from 'src/app/core/_const/app.constant';
-import * as $ from 'jquery';
-
+import { MatDialog } from "@angular/material";
+import { ConfirmComponent } from "../../shop/confirm/confirm.component";
+import { User } from "src/app/core/_models";
+import { AuthenticationService } from "src/app/core/_services";
+import { LocalStorageService } from "src/app/core/_services/local.storage.service";
+import { AppConstant } from "src/app/core/_const/app.constant";
+import * as $ from "jquery";
+import { ProductSerivce } from "src/app/core/_services/product.service";
 
 @Component({
   selector: "app-header",
@@ -21,8 +21,10 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   currentUser: User;
   currentUserSubscription: Subscription;
   cartSubscription: Subscription;
+  compareSubscription: Subscription;
   users: User[] = [];
   cartProducts: product[] = [];
+  compareProducts: product[] = [];
   totalAmount: number = 0;
 
   constructor(
@@ -30,7 +32,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     private localstorage: LocalStorageService,
     private cartService: CartService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private productService: ProductSerivce
   ) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(
       user => {
@@ -43,6 +46,12 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       this.cartProducts = products;
       this.totalAmount = this.handleTotalAmount(this.cartProducts);
     });
+
+    this.compareSubscription = this.productService.currentCompareProducts.subscribe(
+      arrCompares => {
+        this.compareProducts = arrCompares;
+      }
+    );
   }
   ngOnInit() {}
 
@@ -85,6 +94,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() {
     this.currentUserSubscription.unsubscribe();
     this.cartSubscription.unsubscribe();
+    this.compareSubscription.unsubscribe();
   }
 
   removeItemCart(item) {

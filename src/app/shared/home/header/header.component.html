@@ -49,9 +49,10 @@
                                         <div
                                             class="header-top-single-dropdown__dropdown-menu-items deactive-dropdown-menu extra-small-mobile-fix">
                                             <ul>
-                                                <li><a href="javascript:void(0)"
-                                                        routerLink="/home/register">Đăng ký</a></li>
-                                                <li><a href="javascript:void(0)" routerLink="/home/login">Đăng nhập</a></li>
+                                                <li><a href="javascript:void(0)" routerLink="/home/register">Đăng ký</a>
+                                                </li>
+                                                <li><a href="javascript:void(0)" routerLink="/home/login">Đăng nhập</a>
+                                                </li>
                                             </ul>
                                         </div>
 
@@ -66,7 +67,8 @@
                                         <div
                                             class="header-top-single-dropdown__dropdown-menu-items deactive-dropdown-menu extra-small-mobile-fix">
                                             <ul>
-                                                <li><a href="javascript:void(0)" [routerLink]="['/home/account']">Tài khoản của tôi</a></li>
+                                                <li><a href="javascript:void(0)" [routerLink]="['/home/account']">Tài
+                                                        khoản của tôi</a></li>
                                                 <li><a href="javascript:void(0)" (click)="logout()">Đăng xuất</a></li>
                                             </ul>
                                         </div>
@@ -86,8 +88,8 @@
                                                             alt=""> English </a></li>
                                                 <li><a href="#"> <img src="../../../../assets/img/icons/de-de.png"
                                                             alt=""> Germany </a></li>
-                                                            <li><a href="#"> <img src="../../../../assets/img/icons/vi-VN.png"
-                                                                alt=""> Tiếng Việt </a></li>
+                                                <li><a href="#"> <img src="../../../../assets/img/icons/vi-VN.png"
+                                                            alt=""> Tiếng Việt </a></li>
                                             </ul>
                                         </div>
 
@@ -140,7 +142,7 @@
                                 <!--=======  End of logo  =======-->
                             </div>
 
-                            <div class="col-xl-5 offset-xl-1 col-lg-4 order-4 order-lg-2 mt-md-25 mt-sm-25">
+                            <div class="col-xl-4 offset-xl-1 col-lg-4 order-4 order-lg-2 mt-md-25 mt-sm-25">
                                 <!--=======  search bar  =======-->
 
                                 <div class="search-bar">
@@ -172,12 +174,26 @@
                                 <!--=======  End of customer support text  =======-->
                             </div>
 
+
                             <div
                                 class="col-6 col-xl-1 col-lg-2 text-right order-2 order-sm-3 order-lg-4 order-xs-2 col-md-2 col-sm-2">
                                 <!--=======  cart icon  =======-->
 
                                 <div class="header-cart-icon">
-                                    <a href="javascript:void(0)" id="small-cart-trigger" class="small-cart-trigger">
+                                    <a href="javascript:void(0)" [routerLink]="['/shop/product-compare']" matTooltip="So sánh sản phẩm"
+                                        class="small-cart-trigger">
+                                        <i class="icon-sliders"></i>
+                                        <span class="cart-counter">{{compareProducts.length}}</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div
+                                class="col-6 col-xl-1 col-lg-2 text-right order-2 order-sm-3 order-lg-4 order-xs-2 col-md-2 col-sm-2">
+                                <!--=======  cart icon  =======-->
+
+                                <div class="header-cart-icon">
+                                    <a href="javascript:void(0)" matTooltip="Giỏ hàng của bạn" id="small-cart-trigger" class="small-cart-trigger">
                                         <i class="icon-shopping-cart"></i>
                                         <span class="cart-counter">{{cartProducts.length}}</span>
                                     </a>
@@ -246,6 +262,10 @@
 
                                 <!--=======  End of cart icon  =======-->
                             </div>
+
+
+
+
                         </div>
                     </div>
 

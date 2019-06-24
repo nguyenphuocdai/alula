@@ -13,16 +13,16 @@
       <ul>
         <li>
           <a
-            href="javascript:void(0)"
+            href="javascript:void(0)" matTooltip="Xem chi tiết"
             [routerLink]="['/shop/product-detail', item.id]"
             ><i class="icon-eye"></i
           ></a>
         </li>
         <li>
-          <a href="javascript:void(0)"><i class="icon-heart"></i></a>
+          <a href="javascript:void(0)" matTooltip="Yêu thích"><i class="icon-heart"></i></a>
         </li>
         <li>
-          <a href="javascript:void(0)" (click)="addCompareItem(item)"><i class="icon-sliders"></i></a>
+          <a href="javascript:void(0)" matTooltip="So sánh sản phẩm này" (click)="addCompareItem(item)"><i class="icon-sliders"></i></a>
         </li>
       </ul>
     </div>
@@ -49,7 +49,7 @@
     </p>
 
     <span class="cart-icon"
-      ><a href="javascript:void(0)" (click)="openDialog(item)"
+      ><a href="javascript:void(0)" (click)="openDialog(item)" matTooltip="Thêm vào giỏ hàng"
         ><i class="icon-shopping-cart"></i></a
     ></span>
   </div>
