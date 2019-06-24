@@ -9,9 +9,11 @@ import { product, productsCollection } from "src/app/core/_mockup/product";
   styleUrls: ["./product-list.component.scss"]
 })
 export class ProductListComponent implements OnInit {
-  constructor(private productService: ProductSerivce) {}
-
+  p: number = 1;
   Products: product[];
+  
+  constructor(private productService: ProductSerivce) {}
+  
   ngOnInit() {
     this.productService.getAllProducts().subscribe(products => {
       this.Products = products;

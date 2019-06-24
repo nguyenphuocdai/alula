@@ -23,7 +23,7 @@
 
 <!--==================== page content ====================-->
 
-<div class="page-section pb-40">
+<div class="page-section pb-40" *ngIf="isShowCart">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -46,10 +46,10 @@
                                 <tr *ngFor="let item of cartProducts">
                                     <td class="pro-thumbnail"><a href="javascript:void(0)"><img src="{{item.image}}" class="img-fluid" alt="Product"></a></td>
                                     <td class="pro-title"><a href="javascript:void(0)">{{item.name}}</a></td>
-                                    <td class="pro-price"><span>{{item.priceDiscount}}</span></td>
+                                    <td class="pro-price"><span>{{item.priceDiscount}} Đ</span></td>
                                     <td class="pro-quantity"><div class="pro-qty"><input type="text" [value]="item.quatity" [(ngModel)]="item.quatity" #qtyRef="ngModel" [ngModelOptions]="{standalone: true}"></div></td> 
-                                    <td class="pro-subtotal"><span>{{qtyRef.value * item.priceDiscount}}</span></td>
-                                    <td class="pro-remove"><a href="javascript:void(0)" ><i class="fa fa-trash-o" (click)="openDialog(item)"></i></a></td>
+                                    <td class="pro-subtotal"><span>{{qtyRef.value * item.priceDiscount}} Đ</span></td>
+                                    <td class="pro-remove"><a href="javascript:void(0)" (click)="openDialog(item)"><i class="fa fa-trash-o" ></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -126,9 +126,9 @@
                         <div class="cart-summary">
                             <div class="cart-summary-wrap">
                                 <h4>Tóm tắt giỏ hàng</h4>
-                                <p>Tạm tính<span>${{totalAmount}}</span></p>
-                                <p>Phí vận chuyển <span>$00.00</span></p>
-                                <h2>Tổng cộng <span>${{totalAmount}}</span></h2>
+                                <p>Tạm tính<span>{{totalAmount}} Đ</span></p>
+                                <p>Phí vận chuyển <span>00.00</span></p>
+                                <h2>Tổng cộng <span>{{totalAmount}} Đ</span></h2>
                             </div>
                             <div class="cart-summary-button">
                                 <button type="button" class="checkout-btn" routerLink="/shop/checkout">THANH TOÁN</button>
@@ -146,5 +146,8 @@
         </div>
     </div>
 </div>
-
+<div class="d-flex flex-column jutify-content-center align-items-center" *ngIf="!isShowCart" style="min-height: 550px">
+        <p style="text-align: center; width:100%;">Không có sản phẩm nào để so sánh!.</p>
+        <p style="text-align: center; width:100%;">Vui lòng đến trang sản phẩm <strong><a [routerLink]="['/shop']">Ấn vào đây</a></strong></p>
+    </div>
 <!--====================  End of page content  ====================-->

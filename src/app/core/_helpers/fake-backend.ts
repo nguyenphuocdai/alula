@@ -17,6 +17,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 lastName: "Host",
                 username: "root",
                 password: "123456",
+                role: "admin",
                 id: 100000
             };
             users.push(userDefault);
@@ -39,6 +40,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                         username: user.username,
                         firstName: user.firstName,
                         lastName: user.lastName,
+                        role: user.role,
                         token: 'fake-jwt-token'
                     };
 
@@ -81,7 +83,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             if (request.url.endsWith('/users/register') && request.method === 'POST') {
                 // get new user object from post body
                 let newUser = request.body;
-
+                
                 // validation
                 let duplicateUser = users.filter(user => { return user.username === newUser.username; }).length;
                 if (duplicateUser) {

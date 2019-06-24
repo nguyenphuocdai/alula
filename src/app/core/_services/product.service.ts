@@ -10,11 +10,21 @@ export class ProductSerivce {
   public currentProducts: Observable<any[]>;
   private currentProductSubject: BehaviorSubject<any[]>;
 
+  public currentCompareProducts: Observable<any[]>;
+  private currentCompareSubject: BehaviorSubject<any[]>;
+
   constructor(private localStorageService: LocalStorageService) {
+    // subject all product
     this.currentProductSubject = new BehaviorSubject<any[]>(
       this.localStorageService.get(AppConstant.ALL_PRODUCTS)
     );
     this.currentProducts = this.currentProductSubject.asObservable();
+
+    // subject Compare
+    this.currentCompareSubject = new BehaviorSubject<any[]>(
+      this.localStorageService.get(AppConstant.COMPARE_PRODUCT_LIST)
+    );
+    this.currentCompareProducts = this.currentCompareSubject.asObservable();
   }
 
   getAllProducts(): Observable<any> {
@@ -55,5 +65,45 @@ export class ProductSerivce {
   }
   isString(val) {
     return typeof val === "string";
+  }
+
+  addCompareProduct(product: product): number {
+    // invalid data
+    if (!product) {
+      return 422;
+    }
+    let localProducts = this.localStorageService.get(
+      AppConstant.COMPARE_PRODUCT_LIST
+    );
+
+    // data compare full default 3
+    if (localProducts.length === 3) {
+      return 303;
+    }
+
+    let existProduct = this.existCompareProduct(product);
+    if (existProduct) {
+      localProducts.push(product);
+      this.localStorageService.set(
+        AppConstant.COMPARE_PRODUCT_LIST,
+        localProducts
+      );
+      this.currentCompareSubject.next(localProducts);
+      return 200;
+    } else {
+      return 409;
+    }
+  }
+  existCompareProduct(product): boolean {
+    let localProducts = this.localStorageService.get(
+      AppConstant.COMPARE_PRODUCT_LIST
+    );
+    let indexProduct = localProducts.findIndex(x => x.id === product.id);
+
+    if (indexProduct === -1) {
+      return true;
+    }
+
+    return false;
   }
 }

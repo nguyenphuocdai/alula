@@ -199,16 +199,17 @@
                         <div class="pro-qty mr-15 mb-lg-20 mb-md-20 mb-sm-20">
                             <input type="text" value="1">
                         </div> -->
-                        <button type="button" class="theme-button product-cart-button" (click)="openDialog(item)">Add to Cart</button>
+                        <button type="button" class="theme-button product-cart-button" (click)="openDialog(item)">Thêm vào giỏ hàng</button>
                     </div>
 
-                    <!-- <div class="compare-button mb-15">
-                        <a href="#"><i class="icon-sliders"></i> Compare This Product</a>
+                   <div class="compare-button mb-15">
+                        <a href="javascript:void(0)" (click)="addCompareItem(item)"><i class="icon-sliders"></i>Thêm vào danh sách so sánh</a>
                     </div>
-
+                
                     <div class="wishlist-button">
-                        <a href="#"><i class="icon-heart"></i> Add to Wishlist</a>
-                    </div> -->
+                            <i class="fa fa-angle-double-right"></i>
+                        <button mat-button href="javascript:void(0)" [routerLink]="['/shop/product-compare']" [mat-dialog-close]>Đi đến trang so sánh</button>
+                    </div>
                 </div>
                 
                 <!--=======  End of product detail content  =======-->

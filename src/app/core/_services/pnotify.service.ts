@@ -11,12 +11,13 @@ export class PNotifyService {
   //   return PNotify;
   // }
 
-  getNotify(type: string = "info", title: string = "", message: string = "") {
+  getNotify(type: string = "info", title: string = "", message: string = "", icon: string = "") {
     (function($) {
       new PNotify({
         title: title,
         text: message,
-        type: type
+        type: type,
+        icon: icon
       });
     })(jQuery);
   }

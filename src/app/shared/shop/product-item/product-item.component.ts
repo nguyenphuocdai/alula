@@ -10,6 +10,7 @@ import {
 import { SnackComponent } from "../../component/snack/snack.component";
 import { MatDialog } from "@angular/material";
 import { ConfirmComponent } from "../confirm/confirm.component";
+import { ProductSerivce } from 'src/app/core/_services/product.service';
 
 @Component({
   selector: "app-product-item",
@@ -21,7 +22,8 @@ export class ProductItemComponent implements OnInit {
   constructor(
     private _cartService: CartService,
     public dialog: MatDialog,
-    private PNotify: PNotifyService
+    private PNotify: PNotifyService,
+    private productService: ProductSerivce
   ) {}
 
   ngOnInit() {}
@@ -52,6 +54,49 @@ export class ProductItemComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
         this.AddProduct(_product);
+      }
+    });
+  }
+
+  addCompareItem(product: product) {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: "400px",
+      data: { name: "name" }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        let resultAddCompare = this.productService.addCompareProduct(product);
+
+        switch (resultAddCompare) {
+          case 200:
+            this.PNotify.getNotify(
+              "success",
+              "Thông báo",
+              "Thêm sản phẩm vào danh sách so sánh thành công!",
+              "icon-sliders"
+            );
+            break;
+          case 409:
+            this.PNotify.getNotify(
+              "error",
+              "Thông báo",
+              "Sản phẩm đã có trong danh sách so sánh!",
+              "icon-sliders"
+            );
+            break;
+          case 303:
+            this.PNotify.getNotify(
+              "error",
+              "Thông báo",
+              "Danh sách sản phẩm so sánh hiện tại đã đầy!",
+              "icon-sliders"
+            );
+            break;
+          default:
+            this.PNotify.getNotify("success", "Thông báo", "Có lỗi xảy ra !");
+            break;
+        }
       }
     });
   }

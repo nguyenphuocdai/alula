@@ -14,6 +14,7 @@ import { CartService } from "src/app/core/_services/cart.service";
 import { ConfirmComponent } from "../../shop/confirm/confirm.component";
 import * as $ from "jquery";
 import 'slick-carousel';
+import { ProductSerivce } from 'src/app/core/_services/product.service';
 @Component({
   selector: "app-product-modal",
   templateUrl: "./product-modal.component.html",
@@ -27,6 +28,7 @@ export class ProductModalComponent implements OnInit, AfterViewInit {
     private _cartService: CartService,
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
+    private productService: ProductSerivce,
     private PNotify: PNotifyService
   ) {}
 
@@ -55,6 +57,49 @@ export class ProductModalComponent implements OnInit, AfterViewInit {
       if (result === true) {
         this.AddProduct(_product);
         this.dialogProductModalRef.close();
+      }
+    });
+  }
+
+  addCompareItem(product: product) {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: "400px",
+      data: { name: "name" }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        let resultAddCompare = this.productService.addCompareProduct(product);
+
+        switch (resultAddCompare) {
+          case 200:
+            this.PNotify.getNotify(
+              "success",
+              "Thông báo",
+              "Thêm sản phẩm vào danh sách so sánh thành công!",
+              "icon-sliders"
+            );
+            break;
+          case 409:
+            this.PNotify.getNotify(
+              "error",
+              "Thông báo",
+              "Sản phẩm đã có trong danh sách so sánh!",
+              "icon-sliders"
+            );
+            break;
+          case 303:
+            this.PNotify.getNotify(
+              "error",
+              "Thông báo",
+              "Danh sách sản phẩm so sánh hiện tại đã đầy!",
+              "icon-sliders"
+            );
+            break;
+          default:
+            this.PNotify.getNotify("success", "Thông báo", "Có lỗi xảy ra !");
+            break;
+        }
       }
     });
   }

@@ -6,6 +6,7 @@ import { ShopIndexComponent } from "./shop-index/shop-index.component";
 import { CartComponent } from 'src/app/shared/home/cart/cart.component';
 import { CheckoutComponent } from 'src/app/shared/shop/checkout/checkout.component';
 import { CheckoutResultComponent } from 'src/app/shared/shop/checkout-result/checkout-result.component';
+import { ProductCompareComponent } from 'src/app/shared/shop/product-compare/product-compare.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
     children: [
       { path: "", component: ShopIndexComponent },
       { path: "product-detail/:id", component: ProductDetailComponent },
+      { path: "product-compare", component: ProductCompareComponent },
       { path: "cart", component: CartComponent },
       { path: "checkout", component: CheckoutComponent },
       { path: "checkout-result/:id", component: CheckoutResultComponent }

@@ -16,7 +16,7 @@ export class CartComponent implements OnInit {
   cartSubscription: Subscription;
   cartProducts: product[] = [];
   totalAmount: number = 0;
-
+  isShowCart: boolean = false;
   constructor(
     private cartService: CartService,
     private localstorage: LocalStorageService,
@@ -31,6 +31,7 @@ export class CartComponent implements OnInit {
   ngOnInit() {}
 
   handleTotalAmount(cartProductArrray: product[]) {
+    this.isShowCart = false;
     let cartProducts = cartProductArrray;
 
     if (cartProducts.length > 0) {
@@ -40,6 +41,7 @@ export class CartComponent implements OnInit {
           total += cartProducts[i].priceDiscount * cartProducts[i].quatity;
         }
       }
+      this.isShowCart = true;
       return Number(total);
     }
     return 0;

@@ -33,6 +33,8 @@ import { ProductDetailComponent } from "./shop/product-detail/product-detail.com
 import { HomeAccountComponent } from "./home/home-account/home-account.component";
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminProductCreateComponent } from './admin/admin-product-create/admin-product-create.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ProductCompareComponent } from './shop/product-compare/product-compare.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,8 @@ import { AdminProductCreateComponent } from './admin/admin-product-create/admin-
     ProductDetailComponent,
     HomeAccountComponent,
     AdminProductComponent,
-    AdminProductCreateComponent
+    AdminProductCreateComponent,
+    ProductCompareComponent
   ],
   exports: [
     // home
@@ -100,7 +103,9 @@ import { AdminProductCreateComponent } from './admin/admin-product-create/admin-
     AdminOrderComponent,
     ProductDetailComponent,
     AdminProductComponent,
-    AdminProductCreateComponent
+    AdminProductCreateComponent,
+    NgxPaginationModule,
+    ProductCompareComponent
   ],
   entryComponents: [ProductModalComponent, SnackComponent, ConfirmComponent,AdminProductCreateComponent],
   imports: [
@@ -108,7 +113,8 @@ import { AdminProductCreateComponent } from './admin/admin-product-create/admin-
     SharedRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class SharedModule {}

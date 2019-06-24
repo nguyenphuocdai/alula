@@ -170,11 +170,14 @@
                     <!--=======  shop page content  =======-->
                     
                     <div class="row shop-product-wrap grid four-column mb-10">
-                        <div class="col-12 col-lg-3 col-md-6 col-sm-6 mb-20" *ngFor="let item of Products">
+                        <div class="col-12 col-lg-3 col-md-6 col-sm-6 mb-20" *ngFor="let item of Products | paginate: { itemsPerPage: 8, currentPage: p }">
                             <app-product-item [item]="item"></app-product-item>
                         </div>
+                       
                     </div>
-                    
+                    <div class="pagination-custom">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div>
                     <!--=======  End of shop page content  =======-->
 
                     <!--=======  pagination  =======-->
